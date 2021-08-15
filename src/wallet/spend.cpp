@@ -1,4 +1,4 @@
-// Copyright (c) 2021 The Bitcoin Core developers
+// Copyright (c) 2021 The Bubcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -601,7 +601,7 @@ bool CWallet::CreateTransactionInternal(
 
     // Create change script that will be used if we need change
     // TODO: pass in scriptChange instead of reservedest so
-    // change transaction isn't always pay-to-bitcoin-address
+    // change transaction isn't always pay-to-bubcoin-address
     CScript scriptChange;
 
     // coin control: send change to custom address

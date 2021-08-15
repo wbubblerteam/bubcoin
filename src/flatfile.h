@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2020 The Bitcoin Core developers
+// Copyright (c) 2009-2020 The Bubcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_FLATFILE_H
-#define BITCOIN_FLATFILE_H
+#ifndef BUBCOIN_FLATFILE_H
+#define BUBCOIN_FLATFILE_H
 
 #include <string>
 
@@ -87,4 +87,4 @@ public:
     bool Flush(const FlatFilePos& pos, bool finalize = false);
 };
 
-#endif // BITCOIN_FLATFILE_H
+#endif // BUBCOIN_FLATFILE_H

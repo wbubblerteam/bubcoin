@@ -1,9 +1,9 @@
-// Copyright (c) 2019-2020 The Bitcoin Core developers
+// Copyright (c) 2019-2020 The Bubcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_UTIL_BIP32_H
-#define BITCOIN_UTIL_BIP32_H
+#ifndef BUBCOIN_UTIL_BIP32_H
+#define BUBCOIN_UTIL_BIP32_H
 
 #include <attributes.h>
 #include <string>
@@ -16,4 +16,4 @@
 std::string WriteHDKeypath(const std::vector<uint32_t>& keypath);
 std::string FormatHDKeypath(const std::vector<uint32_t>& path);
 
-#endif // BITCOIN_UTIL_BIP32_H
+#endif // BUBCOIN_UTIL_BIP32_H

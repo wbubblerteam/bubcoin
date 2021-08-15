@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2020 The Bitcoin Core developers
+// Copyright (c) 2009-2020 The Bubcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_THREADSAFETY_H
-#define BITCOIN_THREADSAFETY_H
+#ifndef BUBCOIN_THREADSAFETY_H
+#define BUBCOIN_THREADSAFETY_H
 
 #include <mutex>
 
@@ -74,4 +74,4 @@ public:
     ~StdLockGuard() UNLOCK_FUNCTION() {}
 };
 
-#endif // BITCOIN_THREADSAFETY_H
+#endif // BUBCOIN_THREADSAFETY_H

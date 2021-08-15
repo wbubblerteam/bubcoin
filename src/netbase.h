@@ -1,12 +1,12 @@
-// Copyright (c) 2009-2019 The Bitcoin Core developers
+// Copyright (c) 2009-2019 The Bubcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_NETBASE_H
-#define BITCOIN_NETBASE_H
+#ifndef BUBCOIN_NETBASE_H
+#define BUBCOIN_NETBASE_H
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bitcoin-config.h>
+#include <config/bubcoin-config.h>
 #endif
 
 #include <compat.h>
@@ -246,4 +246,4 @@ void InterruptSocks5(bool interrupt);
  */
 bool Socks5(const std::string& strDest, uint16_t port, const ProxyCredentials* auth, const Sock& socket);
 
-#endif // BITCOIN_NETBASE_H
+#endif // BUBCOIN_NETBASE_H

@@ -1,12 +1,12 @@
-// Copyright (c) 2019-2020 The Bitcoin Core developers
+// Copyright (c) 2019-2020 The Bubcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_UTIL_CHECK_H
-#define BITCOIN_UTIL_CHECK_H
+#ifndef BUBCOIN_UTIL_CHECK_H
+#define BUBCOIN_UTIL_CHECK_H
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bitcoin-config.h>
+#include <config/bubcoin-config.h>
 #endif
 
 #include <tinyformat.h>
@@ -72,4 +72,4 @@ T get_pure_r_value(T&& val)
 #define Assume(val) ([&]() -> decltype(get_pure_r_value(val)) { auto&& check = (val); return std::forward<decltype(get_pure_r_value(val))>(check); }())
 #endif
 
-#endif // BITCOIN_UTIL_CHECK_H
+#endif // BUBCOIN_UTIL_CHECK_H
