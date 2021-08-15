@@ -1,9 +1,9 @@
-// Copyright (c) 2016-2019 The Bitcoin Core developers
+// Copyright (c) 2016-2019 The Bubcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_VERSIONBITS_H
-#define BITCOIN_VERSIONBITS_H
+#ifndef BUBCOIN_VERSIONBITS_H
+#define BUBCOIN_VERSIONBITS_H
 
 #include <chain.h>
 #include <sync.h>
@@ -100,4 +100,4 @@ public:
     void Clear();
 };
 
-#endif // BITCOIN_VERSIONBITS_H
+#endif // BUBCOIN_VERSIONBITS_H
