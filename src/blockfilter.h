@@ -1,9 +1,9 @@
-// Copyright (c) 2018-2019 The Bubcoin Core developers
+// Copyright (c) 2018-2019 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BUBCOIN_BLOCKFILTER_H
-#define BUBCOIN_BLOCKFILTER_H
+#ifndef BITCOIN_BLOCKFILTER_H
+#define BITCOIN_BLOCKFILTER_H
 
 #include <stdint.h>
 #include <string>
@@ -168,4 +168,4 @@ public:
     }
 };
 
-#endif // BUBCOIN_BLOCKFILTER_H
+#endif // BITCOIN_BLOCKFILTER_H

@@ -1,9 +1,9 @@
-// Copyright (c) 2011-2019 The Bubcoin Core developers
+// Copyright (c) 2011-2019 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BUBCOIN_WALLET_COINCONTROL_H
-#define BUBCOIN_WALLET_COINCONTROL_H
+#ifndef BITCOIN_WALLET_COINCONTROL_H
+#define BITCOIN_WALLET_COINCONTROL_H
 
 #include <outputtype.h>
 #include <policy/feerate.h>
@@ -90,4 +90,4 @@ private:
     std::set<COutPoint> setSelected;
 };
 
-#endif // BUBCOIN_WALLET_COINCONTROL_H
+#endif // BITCOIN_WALLET_COINCONTROL_H

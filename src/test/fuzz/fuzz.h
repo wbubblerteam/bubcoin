@@ -1,9 +1,9 @@
-// Copyright (c) 2009-2021 The Bubcoin Core developers
+// Copyright (c) 2009-2021 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BUBCOIN_TEST_FUZZ_FUZZ_H
-#define BUBCOIN_TEST_FUZZ_FUZZ_H
+#ifndef BITCOIN_TEST_FUZZ_FUZZ_H
+#define BITCOIN_TEST_FUZZ_FUZZ_H
 
 #include <span.h>
 
@@ -37,4 +37,4 @@ inline void FuzzFrameworkEmptyInitFun() {}
     } const static g_##name##_before_main;                                            \
     void name##_fuzz_target(FuzzBufferType buffer)
 
-#endif // BUBCOIN_TEST_FUZZ_FUZZ_H
+#endif // BITCOIN_TEST_FUZZ_FUZZ_H

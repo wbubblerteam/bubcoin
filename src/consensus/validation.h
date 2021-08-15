@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2020 The Bubcoin Core developers
+// Copyright (c) 2009-2020 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BUBCOIN_CONSENSUS_VALIDATION_H
-#define BUBCOIN_CONSENSUS_VALIDATION_H
+#ifndef BITCOIN_CONSENSUS_VALIDATION_H
+#define BITCOIN_CONSENSUS_VALIDATION_H
 
 #include <string>
 #include <version.h>
@@ -178,4 +178,4 @@ inline int GetWitnessCommitmentIndex(const CBlock& block)
     return commitpos;
 }
 
-#endif // BUBCOIN_CONSENSUS_VALIDATION_H
+#endif // BITCOIN_CONSENSUS_VALIDATION_H

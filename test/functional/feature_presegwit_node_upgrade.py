@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-# Copyright (c) 2017-2020 The Bubcoin Core developers
+# Copyright (c) 2017-2020 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test a pre-segwit node upgrading to segwit consensus"""
 
-from test_framework.test_framework import BubcoinTestFramework
+from test_framework.test_framework import BitcoinTestFramework
 from test_framework.util import (
     assert_equal,
     softfork_active,
 )
 
-class SegwitUpgradeTest(BubcoinTestFramework):
+class SegwitUpgradeTest(BitcoinTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 1

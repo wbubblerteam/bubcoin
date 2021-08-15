@@ -1,11 +1,11 @@
-// Copyright (c) 2015-2019 The Bubcoin Core developers
+// Copyright (c) 2015-2019 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 //
 // C++ wrapper around ctaes, a constant-time AES implementation
 
-#ifndef BUBCOIN_CRYPTO_AES_H
-#define BUBCOIN_CRYPTO_AES_H
+#ifndef BITCOIN_CRYPTO_AES_H
+#define BITCOIN_CRYPTO_AES_H
 
 extern "C" {
 #include <crypto/ctaes/ctaes.h>
@@ -64,4 +64,4 @@ private:
     unsigned char iv[AES_BLOCKSIZE];
 };
 
-#endif // BUBCOIN_CRYPTO_AES_H
+#endif // BITCOIN_CRYPTO_AES_H

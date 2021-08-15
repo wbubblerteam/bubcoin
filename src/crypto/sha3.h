@@ -1,9 +1,9 @@
-// Copyright (c) 2020 The Bubcoin Core developers
+// Copyright (c) 2020 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BUBCOIN_CRYPTO_SHA3_H
-#define BUBCOIN_CRYPTO_SHA3_H
+#ifndef BITCOIN_CRYPTO_SHA3_H
+#define BITCOIN_CRYPTO_SHA3_H
 
 #include <span.h>
 
@@ -38,4 +38,4 @@ public:
     SHA3_256& Reset();
 };
 
-#endif // BUBCOIN_CRYPTO_SHA3_H
+#endif // BITCOIN_CRYPTO_SHA3_H
