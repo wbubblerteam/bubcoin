@@ -77,7 +77,7 @@ def recurse(
         
         pathrename(path)
         if path.is_dir():
-            recurse(path, threadpool)
+            recurse(path, threadpool, ignore)
         else:
             threadpool.submit(filereplace, path)
 
