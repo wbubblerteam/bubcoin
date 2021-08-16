@@ -42,10 +42,10 @@ def filereplace(filepath: Path):
 
 
 def pathrename(filepath: Path) -> Path:
-    filename_replaced = multireplace(filepath.stem, REPLACES)
-    if filepath.stem != filename_replaced:
+    filename_replaced = multireplace(filepath.name, REPLACES)
+    if filepath.name != filename_replaced:
         print(f'Rename: {filepath}')
-        filepath = filepath.rename(filepath.with_stem(filename_replaced))
+        filepath = filepath.rename(filepath.with_name(filename_replaced))
     return filepath
 
 
