@@ -41,11 +41,12 @@ def filereplace(filepath: Path):
             file.write(content_replaced)
 
 
-def pathrename(filepath: Path):
+def pathrename(filepath: Path) -> Path:
     filename_replaced = multireplace(filepath.stem, REPLACES)
     if filepath.stem != filename_replaced:
         print(f'Rename: {filepath}')
-        filepath.rename(filepath.with_stem(filename_replaced))
+        filepath = filepath.rename(filepath.with_stem(filename_replaced))
+    return filepath
 
 
 def check_ignore(files: List[Path]) -> List[Path]:
@@ -75,7 +76,7 @@ def recurse(
             print(f'Ignore: {path}')
             continue
         
-        pathrename(path)
+        path = pathrename(path)
         if path.is_dir():
             recurse(path, threadpool, ignore)
         else:
