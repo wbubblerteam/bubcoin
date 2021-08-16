@@ -51,18 +51,14 @@ def pathrename(filepath: Path) -> Path:
 
 def check_ignore(files: List[Path]) -> List[Path]:
     command = ' '.join(['git check-ignore'] + [str(f) for f in files])
-    print(command)
     try:
         result = subprocess.check_output(
             command, shell=True, encoding='utf-8'
         )
     except subprocess.CalledProcessError as error:
         result = error.output
-    print(result)
     ignored_files = result.splitlines()
-    print(ignored_files)
     ignored_paths = [Path(f.strip('"')).resolve() for f in ignored_files]
-    print(ignored_paths)
 
     return ignored_paths
 
