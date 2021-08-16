@@ -71,7 +71,6 @@ def recurse(
     ignored_paths = check_ignore(iterdir_list) + ignore
     for path in iterdir_list:
         print(path)
-        ignore = ['.git', __name__]
         if path.resolve() in ignored_paths:
             print(f'Ignore: {path}')
             continue
