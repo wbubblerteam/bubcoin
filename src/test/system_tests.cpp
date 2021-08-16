@@ -1,4 +1,4 @@
-// Copyright (c) 2019-2020 The Bitcoin Core developers
+// Copyright (c) 2019-2020 The Bubcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 //
@@ -9,7 +9,7 @@
 #ifdef ENABLE_EXTERNAL_SIGNER
 #if defined(WIN32) && !defined(__kernel_entry)
 // A workaround for boost 1.71 incompatibility with mingw-w64 compiler.
-// For details see https://github.com/bitcoin/bitcoin/pull/22348.
+// For details see https://github.com/bubcoin/bubcoin/pull/22348.
 #define __kernel_entry
 #endif
 #include <boost/process.hpp>
@@ -20,7 +20,7 @@
 BOOST_FIXTURE_TEST_SUITE(system_tests, BasicTestingSetup)
 
 // At least one test is required (in case ENABLE_EXTERNAL_SIGNER is not defined).
-// Workaround for https://github.com/bitcoin/bitcoin/issues/19128
+// Workaround for https://github.com/bubcoin/bubcoin/issues/19128
 BOOST_AUTO_TEST_CASE(dummy)
 {
     BOOST_CHECK(true);

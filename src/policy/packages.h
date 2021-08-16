@@ -1,9 +1,9 @@
-// Copyright (c) 2021 The Bitcoin Core developers
+// Copyright (c) 2021 The Bubcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_POLICY_PACKAGES_H
-#define BITCOIN_POLICY_PACKAGES_H
+#ifndef BUBCOIN_POLICY_PACKAGES_H
+#define BUBCOIN_POLICY_PACKAGES_H
 
 #include <consensus/validation.h>
 #include <policy/policy.h>
@@ -41,4 +41,4 @@ class PackageValidationState : public ValidationState<PackageValidationResult> {
  */
 bool CheckPackage(const Package& txns, PackageValidationState& state);
 
-#endif // BITCOIN_POLICY_PACKAGES_H
+#endif // BUBCOIN_POLICY_PACKAGES_H

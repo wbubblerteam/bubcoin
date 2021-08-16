@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2019 The Bitcoin Core developers
+// Copyright (c) 2009-2019 The Bubcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_WALLET_ISMINE_H
-#define BITCOIN_WALLET_ISMINE_H
+#ifndef BUBCOIN_WALLET_ISMINE_H
+#define BUBCOIN_WALLET_ISMINE_H
 
 #include <script/standard.h>
 
@@ -17,7 +17,7 @@ class CScript;
 /**
  * IsMine() return codes, which depend on ScriptPubKeyMan implementation.
  * Not every ScriptPubKeyMan covers all types, please refer to
- * https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-0.21.0.md#ismine-semantics
+ * https://github.com/bubcoin/bubcoin/blob/master/doc/release-notes/release-notes-0.21.0.md#ismine-semantics
  * for better understanding.
  *
  * For LegacyScriptPubKeyMan,
@@ -67,4 +67,4 @@ struct CachableAmount
     }
 };
 
-#endif // BITCOIN_WALLET_ISMINE_H
+#endif // BUBCOIN_WALLET_ISMINE_H
