@@ -1,9 +1,9 @@
-// Copyright (c) 2020-2020 The Bubcoin Core developers
+// Copyright (c) 2020-2020 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BUBCOIN_I2P_H
-#define BUBCOIN_I2P_H
+#ifndef BITCOIN_I2P_H
+#define BITCOIN_I2P_H
 
 #include <compat.h>
 #include <fs.h>
@@ -267,4 +267,4 @@ private:
 } // namespace sam
 } // namespace i2p
 
-#endif /* BUBCOIN_I2P_H */
+#endif /* BITCOIN_I2P_H */

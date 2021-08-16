@@ -1,9 +1,9 @@
-// Copyright (c) 2016-2020 The Bubcoin Core developers
+// Copyright (c) 2016-2020 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BUBCOIN_POLICY_RBF_H
-#define BUBCOIN_POLICY_RBF_H
+#ifndef BITCOIN_POLICY_RBF_H
+#define BITCOIN_POLICY_RBF_H
 
 #include <txmempool.h>
 
@@ -31,4 +31,4 @@ enum class RBFTransactionState {
 RBFTransactionState IsRBFOptIn(const CTransaction& tx, const CTxMemPool& pool) EXCLUSIVE_LOCKS_REQUIRED(pool.cs);
 RBFTransactionState IsRBFOptInEmptyMempool(const CTransaction& tx);
 
-#endif // BUBCOIN_POLICY_RBF_H
+#endif // BITCOIN_POLICY_RBF_H

@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2020 The Bubcoin Core developers
+// Copyright (c) 2009-2020 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BUBCOIN_NET_PROCESSING_H
-#define BUBCOIN_NET_PROCESSING_H
+#ifndef BITCOIN_NET_PROCESSING_H
+#define BITCOIN_NET_PROCESSING_H
 
 #include <net.h>
 #include <validationinterface.h>
@@ -78,4 +78,4 @@ public:
                                 const std::chrono::microseconds time_received, const std::atomic<bool>& interruptMsgProc) = 0;
 };
 
-#endif // BUBCOIN_NET_PROCESSING_H
+#endif // BITCOIN_NET_PROCESSING_H

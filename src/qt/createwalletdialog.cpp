@@ -1,9 +1,9 @@
-// Copyright (c) 2019-2020 The Bubcoin Core developers
+// Copyright (c) 2019-2020 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bubcoin-config.h>
+#include <config/bitcoin-config.h>
 #endif
 
 #include <external_signer.h>

@@ -1,9 +1,9 @@
-// Copyright (c) 2017-2020 The Bubcoin Core developers
+// Copyright (c) 2017-2020 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BUBCOIN_RPC_RAWTRANSACTION_UTIL_H
-#define BUBCOIN_RPC_RAWTRANSACTION_UTIL_H
+#ifndef BITCOIN_RPC_RAWTRANSACTION_UTIL_H
+#define BITCOIN_RPC_RAWTRANSACTION_UTIL_H
 
 #include <map>
 #include <string>
@@ -40,4 +40,4 @@ void ParsePrevouts(const UniValue& prevTxsUnival, FillableSigningProvider* keyst
 /** Create a transaction from univalue parameters */
 CMutableTransaction ConstructTransaction(const UniValue& inputs_in, const UniValue& outputs_in, const UniValue& locktime, bool rbf);
 
-#endif // BUBCOIN_RPC_RAWTRANSACTION_UTIL_H
+#endif // BITCOIN_RPC_RAWTRANSACTION_UTIL_H

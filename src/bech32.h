@@ -10,8 +10,8 @@
 //
 // For more information, see BIP 173 and BIP 350.
 
-#ifndef BUBCOIN_BECH32_H
-#define BUBCOIN_BECH32_H
+#ifndef BITCOIN_BECH32_H
+#define BITCOIN_BECH32_H
 
 #include <stdint.h>
 #include <string>
@@ -46,4 +46,4 @@ DecodeResult Decode(const std::string& str);
 
 } // namespace bech32
 
-#endif // BUBCOIN_BECH32_H
+#endif // BITCOIN_BECH32_H

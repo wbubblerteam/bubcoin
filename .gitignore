@@ -2,17 +2,17 @@
 
 *.exe
 *.pdb
-src/bubcoin
-src/bubcoind
-src/bubcoin-cli
-src/bubcoin-gui
-src/bubcoin-node
-src/bubcoin-tx
-src/bubcoin-util
-src/bubcoin-wallet
+src/bitcoin
+src/bitcoind
+src/bitcoin-cli
+src/bitcoin-gui
+src/bitcoin-node
+src/bitcoin-tx
+src/bitcoin-util
+src/bitcoin-wallet
 src/test/fuzz/fuzz
-src/test/test_bubcoin
-src/qt/test/test_bubcoin-qt
+src/test/test_bitcoin
+src/qt/test/test_bitcoin-qt
 
 # autoreconf
 Makefile.in
@@ -36,8 +36,8 @@ config.log
 config.status
 configure
 libtool
-src/config/bubcoin-config.h
-src/config/bubcoin-config.h.in
+src/config/bitcoin-config.h
+src/config/bitcoin-config.h.in
 src/config/stamp-h1
 src/obj
 share/setup.nsi
@@ -51,11 +51,11 @@ src/qt/forms/ui_*.h
 
 src/qt/test/moc*.cpp
 
-src/qt/bubcoin-qt.config
-src/qt/bubcoin-qt.creator
-src/qt/bubcoin-qt.creator.user
-src/qt/bubcoin-qt.files
-src/qt/bubcoin-qt.includes
+src/qt/bitcoin-qt.config
+src/qt/bitcoin-qt.creator
+src/qt/bitcoin-qt.creator.user
+src/qt/bitcoin-qt.files
+src/qt/bitcoin-qt.includes
 
 .deps
 .dirstamp
@@ -93,8 +93,8 @@ src/qt/bubcoin-qt.includes
 *.qm
 Makefile
 !depends/Makefile
-src/qt/bubcoin-qt
-Bubcoin-Qt.app
+src/qt/bitcoin-qt
+Bitcoin-Qt.app
 background.tiff*
 
 # Qt Creator
@@ -102,7 +102,7 @@ Makefile.am.user
 
 # Unit-tests
 Makefile.test
-bubcoin-qt_test
+bitcoin-qt_test
 
 # Resources cpp
 qrc_*.cpp
@@ -118,7 +118,7 @@ releases
 *.gcno
 *.gcda
 /*.info
-test_bubcoin.coverage/
+test_bitcoin.coverage/
 total.coverage/
 fuzz.coverage/
 coverage_percent.txt
@@ -137,7 +137,7 @@ test/.mypy_cache/
 
 /doc/doxygen/
 
-libbubcoinconsensus.pc
+libbitcoinconsensus.pc
 contrib/devtools/split-debug.sh
 
 # Output from running db4 installation

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2017-2020 The Bubcoin Core developers
+# Copyright (c) 2017-2020 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test various command line arguments and configuration file parameters."""
@@ -7,11 +7,11 @@
 import os
 import time
 
-from test_framework.test_framework import BubcoinTestFramework
+from test_framework.test_framework import BitcoinTestFramework
 from test_framework import util
 
 
-class ConfArgsTest(BubcoinTestFramework):
+class ConfArgsTest(BitcoinTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 1
@@ -23,7 +23,7 @@ class ConfArgsTest(BubcoinTestFramework):
         self.stop_node(0)
 
         inc_conf_file_path = os.path.join(self.nodes[0].datadir, 'include.conf')
-        with open(os.path.join(self.nodes[0].datadir, 'bubcoin.conf'), 'a', encoding='utf-8') as conf:
+        with open(os.path.join(self.nodes[0].datadir, 'bitcoin.conf'), 'a', encoding='utf-8') as conf:
             conf.write('includeconf={}\n'.format(inc_conf_file_path))
 
         self.nodes[0].assert_start_raises_init_error(
@@ -45,7 +45,7 @@ class ConfArgsTest(BubcoinTestFramework):
                 conf.write("wallet=foo\n")
             self.nodes[0].assert_start_raises_init_error(expected_msg='Error: Config setting for -wallet only applied on %s network when in [%s] section.' % (self.chain, self.chain))
 
-        main_conf_file_path = os.path.join(self.options.tmpdir, 'node0', 'bubcoin_main.conf')
+        main_conf_file_path = os.path.join(self.options.tmpdir, 'node0', 'bitcoin_main.conf')
         util.write_config(main_conf_file_path, n=0, chain='', extra_config='includeconf={}\n'.format(inc_conf_file_path))
         with open(inc_conf_file_path, 'w', encoding='utf-8') as conf:
             conf.write('acceptnonstdtxn=1\n')
@@ -68,7 +68,7 @@ class ConfArgsTest(BubcoinTestFramework):
         self.nodes[0].assert_start_raises_init_error(expected_msg='Error: Error reading configuration file: parse error on line 4, using # in rpcpassword can be ambiguous and should be avoided')
 
         inc_conf_file2_path = os.path.join(self.nodes[0].datadir, 'include2.conf')
-        with open(os.path.join(self.nodes[0].datadir, 'bubcoin.conf'), 'a', encoding='utf-8') as conf:
+        with open(os.path.join(self.nodes[0].datadir, 'bitcoin.conf'), 'a', encoding='utf-8') as conf:
             conf.write('includeconf={}\n'.format(inc_conf_file2_path))
 
         with open(inc_conf_file_path, 'w', encoding='utf-8') as conf:
@@ -238,7 +238,7 @@ class ConfArgsTest(BubcoinTestFramework):
         self.nodes[0].assert_start_raises_init_error(['-datadir=' + new_data_dir], 'Error: Specified data directory "' + new_data_dir + '" does not exist.')
 
         # Check that using non-existent datadir in conf file fails
-        conf_file = os.path.join(default_data_dir, "bubcoin.conf")
+        conf_file = os.path.join(default_data_dir, "bitcoin.conf")
 
         # datadir needs to be set before [chain] section
         conf_file_contents = open(conf_file, encoding='utf8').read()

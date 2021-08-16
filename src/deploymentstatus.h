@@ -1,9 +1,9 @@
-// Copyright (c) 2020 The Bubcoin Core developers
+// Copyright (c) 2020 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BUBCOIN_DEPLOYMENTSTATUS_H
-#define BUBCOIN_DEPLOYMENTSTATUS_H
+#ifndef BITCOIN_DEPLOYMENTSTATUS_H
+#define BITCOIN_DEPLOYMENTSTATUS_H
 
 #include <chain.h>
 #include <versionbits.h>
@@ -52,4 +52,4 @@ inline bool DeploymentEnabled(const Consensus::Params& params, Consensus::Deploy
     return params.vDeployments[dep].nStartTime != Consensus::BIP9Deployment::NEVER_ACTIVE;
 }
 
-#endif // BUBCOIN_DEPLOYMENTSTATUS_H
+#endif // BITCOIN_DEPLOYMENTSTATUS_H
