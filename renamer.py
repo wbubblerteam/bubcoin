@@ -89,12 +89,17 @@ def main():
     
     threadpool = concurrent.futures.ThreadPoolExecutor()
     cwd = Path().resolve()
+    # todo: ignore specific phrases like the name BtcDrak
     ignore_str = [
         __file__,
         '.git',
         'contrib/builder-keys/keys.txt',
+        'test/functional/wallet_taproot.py',
+        'test/functional/data',
     ]
     ignore_path = [Path(p).resolve() for p in ignore_str]
+    # always do gitignore first
+    filereplace(Path('.gitignore'))
     recurse(cwd, threadpool, ignore_path)
 
 
