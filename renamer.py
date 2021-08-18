@@ -31,7 +31,7 @@ def multireplace(text: str, mapping: dict) -> str:
     return text
 
 
-def filereplace(filepath: Path):
+def filereplace(filepath: Path, mapping: dict = REPLACES):
     with open(filepath, encoding='utf-8') as file:
         content = file.read()
     content_replaced = multireplace(content, REPLACES)
@@ -41,7 +41,7 @@ def filereplace(filepath: Path):
             file.write(content_replaced)
 
 
-def pathrename(filepath: Path) -> Path:
+def pathrename(filepath: Path, mapping: dict = REPLACES) -> Path:
     filename_replaced = multireplace(filepath.name, REPLACES)
     if filepath.name != filename_replaced:
         print(f'Rename: {filepath}')
