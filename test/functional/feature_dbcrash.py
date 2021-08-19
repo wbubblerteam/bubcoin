@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2017-2020 The Bubcoin Core developers
+# Copyright (c) 2017-2020 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test recovery from a crash during chainstate writing.
@@ -37,14 +37,14 @@ from test_framework.messages import (
     CTxIn,
     CTxOut,
 )
-from test_framework.test_framework import BubcoinTestFramework
+from test_framework.test_framework import BitcoinTestFramework
 from test_framework.util import (
     assert_equal,
     create_confirmed_utxos,
 )
 
 
-class ChainstateWriteCrashTest(BubcoinTestFramework):
+class ChainstateWriteCrashTest(BitcoinTestFramework):
     def set_test_params(self):
         self.num_nodes = 4
         self.rpc_timeout = 480
@@ -91,14 +91,14 @@ class ChainstateWriteCrashTest(BubcoinTestFramework):
                 return utxo_hash
             except:
                 # An exception here should mean the node is about to crash.
-                # If bubcoind exits, then try again.  wait_for_node_exit()
-                # should raise an exception if bubcoind doesn't exit.
+                # If bitcoind exits, then try again.  wait_for_node_exit()
+                # should raise an exception if bitcoind doesn't exit.
                 self.wait_for_node_exit(node_index, timeout=10)
             self.crashed_on_restart += 1
             time.sleep(1)
 
-        # If we got here, bubcoind isn't coming back up on restart.  Could be a
-        # bug in bubcoind, or we've gotten unlucky with our dbcrash ratio --
+        # If we got here, bitcoind isn't coming back up on restart.  Could be a
+        # bug in bitcoind, or we've gotten unlucky with our dbcrash ratio --
         # perhaps we generated a test case that blew up our cache?
         # TODO: If this happens a lot, we should try to restart without -dbcrashratio
         # and make sure that recovery happens.

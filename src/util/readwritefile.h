@@ -1,9 +1,9 @@
-// Copyright (c) 2015-2020 The Bubcoin Core developers
+// Copyright (c) 2015-2020 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BUBCOIN_UTIL_READWRITEFILE_H
-#define BUBCOIN_UTIL_READWRITEFILE_H
+#ifndef BITCOIN_UTIL_READWRITEFILE_H
+#define BITCOIN_UTIL_READWRITEFILE_H
 
 #include <fs.h>
 
@@ -25,4 +25,4 @@ std::pair<bool,std::string> ReadBinaryFile(const fs::path &filename, size_t maxs
  */
 bool WriteBinaryFile(const fs::path &filename, const std::string &data);
 
-#endif /* BUBCOIN_UTIL_READWRITEFILE_H */
+#endif /* BITCOIN_UTIL_READWRITEFILE_H */

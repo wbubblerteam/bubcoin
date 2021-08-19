@@ -1,9 +1,9 @@
-// Copyright (c) 2016-2020 The Bubcoin Core developers
+// Copyright (c) 2016-2020 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BUBCOIN_CRYPTO_SIPHASH_H
-#define BUBCOIN_CRYPTO_SIPHASH_H
+#ifndef BITCOIN_CRYPTO_SIPHASH_H
+#define BITCOIN_CRYPTO_SIPHASH_H
 
 #include <stdint.h>
 
@@ -44,4 +44,4 @@ public:
 uint64_t SipHashUint256(uint64_t k0, uint64_t k1, const uint256& val);
 uint64_t SipHashUint256Extra(uint64_t k0, uint64_t k1, const uint256& val, uint32_t extra);
 
-#endif // BUBCOIN_CRYPTO_SIPHASH_H
+#endif // BITCOIN_CRYPTO_SIPHASH_H

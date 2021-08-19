@@ -1,9 +1,9 @@
-// Copyright (c) 2018-2021 The Bubcoin Core developers
+// Copyright (c) 2018-2021 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BUBCOIN_EXTERNAL_SIGNER_H
-#define BUBCOIN_EXTERNAL_SIGNER_H
+#ifndef BITCOIN_EXTERNAL_SIGNER_H
+#define BITCOIN_EXTERNAL_SIGNER_H
 
 #include <univalue.h>
 #include <util/system.h>
@@ -21,7 +21,7 @@ private:
     //! The command which handles interaction with the external signer.
     std::string m_command;
 
-    //! Bubcoin mainnet, testnet, etc
+    //! Bitcoin mainnet, testnet, etc
     std::string m_chain;
 
     const std::string NetworkArg() const;
@@ -63,4 +63,4 @@ public:
     bool SignTransaction(PartiallySignedTransaction& psbt, std::string& error);
 };
 
-#endif // BUBCOIN_EXTERNAL_SIGNER_H
+#endif // BITCOIN_EXTERNAL_SIGNER_H

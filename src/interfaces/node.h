@@ -1,9 +1,9 @@
-// Copyright (c) 2018-2020 The Bubcoin Core developers
+// Copyright (c) 2018-2020 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BUBCOIN_INTERFACES_NODE_H
-#define BUBCOIN_INTERFACES_NODE_H
+#ifndef BITCOIN_INTERFACES_NODE_H
+#define BITCOIN_INTERFACES_NODE_H
 
 #include <amount.h>     // For CAmount
 #include <external_signer.h>
@@ -50,7 +50,7 @@ struct BlockAndHeaderTipInfo
     double verification_progress;
 };
 
-//! Top-level interface for a bubcoin node (bubcoind process).
+//! Top-level interface for a bitcoin node (bitcoind process).
 class Node
 {
 public:
@@ -241,4 +241,4 @@ struct BlockTip {
 
 } // namespace interfaces
 
-#endif // BUBCOIN_INTERFACES_NODE_H
+#endif // BITCOIN_INTERFACES_NODE_H

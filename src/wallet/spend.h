@@ -1,9 +1,9 @@
-// Copyright (c) 2021 The Bubcoin Core developers
+// Copyright (c) 2021 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BUBCOIN_WALLET_SPEND_H
-#define BUBCOIN_WALLET_SPEND_H
+#ifndef BITCOIN_WALLET_SPEND_H
+#define BITCOIN_WALLET_SPEND_H
 
 #include <wallet/coinselection.h>
 #include <wallet/transaction.h>
@@ -61,4 +61,4 @@ public:
     }
 };
 
-#endif // BUBCOIN_WALLET_SPEND_H
+#endif // BITCOIN_WALLET_SPEND_H

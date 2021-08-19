@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2016 The Bubcoin Core developers
+# Copyright (c) 2013-2016 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -24,42 +24,42 @@ else
 LIBUNIVALUE = $(UNIVALUE_LIBS)
 endif
 
-BUBCOIN_INCLUDES=-I$(builddir) -I$(srcdir)/secp256k1/include $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS)
+BITCOIN_INCLUDES=-I$(builddir) -I$(srcdir)/secp256k1/include $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS)
 
-BUBCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
+BITCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
 
-LIBBUBCOIN_SERVER=libbubcoin_server.a
-LIBBUBCOIN_COMMON=libbubcoin_common.a
-LIBBUBCOIN_CONSENSUS=libbubcoin_consensus.a
-LIBBUBCOIN_CLI=libbubcoin_cli.a
-LIBBUBCOIN_UTIL=libbubcoin_util.a
-LIBBUBCOIN_CRYPTO_BASE=crypto/libbubcoin_crypto_base.a
-LIBBUBCOINQT=qt/libbubcoinqt.a
+LIBBITCOIN_SERVER=libbitcoin_server.a
+LIBBITCOIN_COMMON=libbitcoin_common.a
+LIBBITCOIN_CONSENSUS=libbitcoin_consensus.a
+LIBBITCOIN_CLI=libbitcoin_cli.a
+LIBBITCOIN_UTIL=libbitcoin_util.a
+LIBBITCOIN_CRYPTO_BASE=crypto/libbitcoin_crypto_base.a
+LIBBITCOINQT=qt/libbitcoinqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 
 if ENABLE_ZMQ
-LIBBUBCOIN_ZMQ=libbubcoin_zmq.a
+LIBBITCOIN_ZMQ=libbitcoin_zmq.a
 endif
-if BUILD_BUBCOIN_LIBS
-LIBBUBCOINCONSENSUS=libbubcoinconsensus.la
+if BUILD_BITCOIN_LIBS
+LIBBITCOINCONSENSUS=libbitcoinconsensus.la
 endif
 if ENABLE_WALLET
-LIBBUBCOIN_WALLET=libbubcoin_wallet.a
-LIBBUBCOIN_WALLET_TOOL=libbubcoin_wallet_tool.a
+LIBBITCOIN_WALLET=libbitcoin_wallet.a
+LIBBITCOIN_WALLET_TOOL=libbitcoin_wallet_tool.a
 endif
 
-LIBBUBCOIN_CRYPTO= $(LIBBUBCOIN_CRYPTO_BASE)
+LIBBITCOIN_CRYPTO= $(LIBBITCOIN_CRYPTO_BASE)
 if ENABLE_SSE41
-LIBBUBCOIN_CRYPTO_SSE41 = crypto/libbubcoin_crypto_sse41.a
-LIBBUBCOIN_CRYPTO += $(LIBBUBCOIN_CRYPTO_SSE41)
+LIBBITCOIN_CRYPTO_SSE41 = crypto/libbitcoin_crypto_sse41.a
+LIBBITCOIN_CRYPTO += $(LIBBITCOIN_CRYPTO_SSE41)
 endif
 if ENABLE_AVX2
-LIBBUBCOIN_CRYPTO_AVX2 = crypto/libbubcoin_crypto_avx2.a
-LIBBUBCOIN_CRYPTO += $(LIBBUBCOIN_CRYPTO_AVX2)
+LIBBITCOIN_CRYPTO_AVX2 = crypto/libbitcoin_crypto_avx2.a
+LIBBITCOIN_CRYPTO += $(LIBBITCOIN_CRYPTO_AVX2)
 endif
 if ENABLE_SHANI
-LIBBUBCOIN_CRYPTO_SHANI = crypto/libbubcoin_crypto_shani.a
-LIBBUBCOIN_CRYPTO += $(LIBBUBCOIN_CRYPTO_SHANI)
+LIBBITCOIN_CRYPTO_SHANI = crypto/libbitcoin_crypto_shani.a
+LIBBITCOIN_CRYPTO += $(LIBBITCOIN_CRYPTO_SHANI)
 endif
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*.h) $(wildcard secp256k1/src/*.c) $(wildcard secp256k1/include/*)
@@ -68,53 +68,53 @@ $(LIBSECP256K1): $(wildcard secp256k1/src/*.h) $(wildcard secp256k1/src/*.c) $(w
 # Make is not made aware of per-object dependencies to avoid limiting building parallelization
 # But to build the less dependent modules first, we manually select their order here:
 EXTRA_LIBRARIES += \
-  $(LIBBUBCOIN_CRYPTO) \
-  $(LIBBUBCOIN_UTIL) \
-  $(LIBBUBCOIN_COMMON) \
-  $(LIBBUBCOIN_CONSENSUS) \
-  $(LIBBUBCOIN_SERVER) \
-  $(LIBBUBCOIN_CLI) \
-  $(LIBBUBCOIN_IPC) \
-  $(LIBBUBCOIN_WALLET) \
-  $(LIBBUBCOIN_WALLET_TOOL) \
-  $(LIBBUBCOIN_ZMQ)
+  $(LIBBITCOIN_CRYPTO) \
+  $(LIBBITCOIN_UTIL) \
+  $(LIBBITCOIN_COMMON) \
+  $(LIBBITCOIN_CONSENSUS) \
+  $(LIBBITCOIN_SERVER) \
+  $(LIBBITCOIN_CLI) \
+  $(LIBBITCOIN_IPC) \
+  $(LIBBITCOIN_WALLET) \
+  $(LIBBITCOIN_WALLET_TOOL) \
+  $(LIBBITCOIN_ZMQ)
 
-lib_LTLIBRARIES = $(LIBBUBCOINCONSENSUS)
+lib_LTLIBRARIES = $(LIBBITCOINCONSENSUS)
 
 bin_PROGRAMS =
 noinst_PROGRAMS =
 TESTS =
 BENCHMARKS =
 
-if BUILD_BUBCOIND
-  bin_PROGRAMS += bubcoind
+if BUILD_BITCOIND
+  bin_PROGRAMS += bitcoind
 endif
 
-if BUILD_BUBCOIN_NODE
-  bin_PROGRAMS += bubcoin-node
+if BUILD_BITCOIN_NODE
+  bin_PROGRAMS += bitcoin-node
 endif
 
-if BUILD_BUBCOIN_CLI
-  bin_PROGRAMS += bubcoin-cli
+if BUILD_BITCOIN_CLI
+  bin_PROGRAMS += bitcoin-cli
 endif
 
-if BUILD_BUBCOIN_TX
-  bin_PROGRAMS += bubcoin-tx
+if BUILD_BITCOIN_TX
+  bin_PROGRAMS += bitcoin-tx
 endif
 
 if ENABLE_WALLET
-if BUILD_BUBCOIN_WALLET
-  bin_PROGRAMS += bubcoin-wallet
+if BUILD_BITCOIN_WALLET
+  bin_PROGRAMS += bitcoin-wallet
 endif
 endif
 
-if BUILD_BUBCOIN_UTIL
-  bin_PROGRAMS += bubcoin-util
+if BUILD_BITCOIN_UTIL
+  bin_PROGRAMS += bitcoin-util
 endif
 
 .PHONY: FORCE check-symbols check-security
-# bubcoin core #
-BUBCOIN_CORE_H = \
+# bitcoin core #
+BITCOIN_CORE_H = \
   addrdb.h \
   addrman.h \
   attributes.h \
@@ -310,17 +310,17 @@ obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
 	@$(top_srcdir)/share/genbuild.sh "$(abs_top_builddir)/src/obj/build.h" \
 	  "$(abs_top_srcdir)"
-libbubcoin_util_a-clientversion.$(OBJEXT): obj/build.h
+libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
-ipc/capnp/libbubcoin_ipc_a-ipc.$(OBJEXT): $(libbubcoin_ipc_mpgen_input:=.h)
+ipc/capnp/libbitcoin_ipc_a-ipc.$(OBJEXT): $(libbitcoin_ipc_mpgen_input:=.h)
 
-# server: shared between bubcoind and bubcoin-qt
+# server: shared between bitcoind and bitcoin-qt
 # Contains code accessing mempool and chain state that is meant to be separated
 # from wallet and gui code (see node/README.md). Shared code should go in
-# libbubcoin_common or libbubcoin_util libraries, instead.
-libbubcoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BUBCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(NATPMP_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
-libbubcoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbubcoin_server_a_SOURCES = \
+# libbitcoin_common or libbitcoin_util libraries, instead.
+libbitcoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(NATPMP_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libbitcoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbitcoin_server_a_SOURCES = \
   addrdb.cpp \
   addrman.cpp \
   banman.cpp \
@@ -376,19 +376,19 @@ libbubcoin_server_a_SOURCES = \
   validation.cpp \
   validationinterface.cpp \
   versionbits.cpp \
-  $(BUBCOIN_CORE_H)
+  $(BITCOIN_CORE_H)
 
 if ENABLE_WALLET
-libbubcoin_server_a_SOURCES += wallet/init.cpp
+libbitcoin_server_a_SOURCES += wallet/init.cpp
 endif
 if !ENABLE_WALLET
-libbubcoin_server_a_SOURCES += dummywallet.cpp
+libbitcoin_server_a_SOURCES += dummywallet.cpp
 endif
 
 if ENABLE_ZMQ
-libbubcoin_zmq_a_CPPFLAGS = $(AM_CPPFLAGS) $(BUBCOIN_INCLUDES) $(ZMQ_CFLAGS)
-libbubcoin_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbubcoin_zmq_a_SOURCES = \
+libbitcoin_zmq_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(ZMQ_CFLAGS)
+libbitcoin_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbitcoin_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
   zmq/zmqnotificationinterface.cpp \
   zmq/zmqpublishnotifier.cpp \
@@ -397,11 +397,11 @@ libbubcoin_zmq_a_SOURCES = \
 endif
 
 
-# wallet: shared between bubcoind and bubcoin-qt, but only linked
+# wallet: shared between bitcoind and bitcoin-qt, but only linked
 # when wallet enabled
-libbubcoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BUBCOIN_INCLUDES) $(SQLITE_CFLAGS)
-libbubcoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbubcoin_wallet_a_SOURCES = \
+libbitcoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(SQLITE_CFLAGS)
+libbitcoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbitcoin_wallet_a_SOURCES = \
   wallet/coincontrol.cpp \
   wallet/context.cpp \
   wallet/crypter.cpp \
@@ -422,25 +422,25 @@ libbubcoin_wallet_a_SOURCES = \
   wallet/walletdb.cpp \
   wallet/walletutil.cpp \
   wallet/coinselection.cpp \
-  $(BUBCOIN_CORE_H)
+  $(BITCOIN_CORE_H)
 
 if USE_SQLITE
-libbubcoin_wallet_a_SOURCES += wallet/sqlite.cpp
+libbitcoin_wallet_a_SOURCES += wallet/sqlite.cpp
 endif
 if USE_BDB
-libbubcoin_wallet_a_SOURCES += wallet/bdb.cpp wallet/salvage.cpp
+libbitcoin_wallet_a_SOURCES += wallet/bdb.cpp wallet/salvage.cpp
 endif
 
-libbubcoin_wallet_tool_a_CPPFLAGS = $(AM_CPPFLAGS) $(BUBCOIN_INCLUDES)
-libbubcoin_wallet_tool_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbubcoin_wallet_tool_a_SOURCES = \
+libbitcoin_wallet_tool_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libbitcoin_wallet_tool_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbitcoin_wallet_tool_a_SOURCES = \
   wallet/wallettool.cpp \
-  $(BUBCOIN_CORE_H)
+  $(BITCOIN_CORE_H)
 
 # crypto primitives library
-crypto_libbubcoin_crypto_base_a_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libbubcoin_crypto_base_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-crypto_libbubcoin_crypto_base_a_SOURCES = \
+crypto_libbitcoin_crypto_base_a_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libbitcoin_crypto_base_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+crypto_libbitcoin_crypto_base_a_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
   crypto/chacha_poly_aead.h \
@@ -472,31 +472,31 @@ crypto_libbubcoin_crypto_base_a_SOURCES = \
   crypto/siphash.h
 
 if USE_ASM
-crypto_libbubcoin_crypto_base_a_SOURCES += crypto/sha256_sse4.cpp
+crypto_libbitcoin_crypto_base_a_SOURCES += crypto/sha256_sse4.cpp
 endif
 
-crypto_libbubcoin_crypto_sse41_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-crypto_libbubcoin_crypto_sse41_a_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libbubcoin_crypto_sse41_a_CXXFLAGS += $(SSE41_CXXFLAGS)
-crypto_libbubcoin_crypto_sse41_a_CPPFLAGS += -DENABLE_SSE41
-crypto_libbubcoin_crypto_sse41_a_SOURCES = crypto/sha256_sse41.cpp
+crypto_libbitcoin_crypto_sse41_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+crypto_libbitcoin_crypto_sse41_a_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libbitcoin_crypto_sse41_a_CXXFLAGS += $(SSE41_CXXFLAGS)
+crypto_libbitcoin_crypto_sse41_a_CPPFLAGS += -DENABLE_SSE41
+crypto_libbitcoin_crypto_sse41_a_SOURCES = crypto/sha256_sse41.cpp
 
-crypto_libbubcoin_crypto_avx2_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-crypto_libbubcoin_crypto_avx2_a_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libbubcoin_crypto_avx2_a_CXXFLAGS += $(AVX2_CXXFLAGS)
-crypto_libbubcoin_crypto_avx2_a_CPPFLAGS += -DENABLE_AVX2
-crypto_libbubcoin_crypto_avx2_a_SOURCES = crypto/sha256_avx2.cpp
+crypto_libbitcoin_crypto_avx2_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+crypto_libbitcoin_crypto_avx2_a_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libbitcoin_crypto_avx2_a_CXXFLAGS += $(AVX2_CXXFLAGS)
+crypto_libbitcoin_crypto_avx2_a_CPPFLAGS += -DENABLE_AVX2
+crypto_libbitcoin_crypto_avx2_a_SOURCES = crypto/sha256_avx2.cpp
 
-crypto_libbubcoin_crypto_shani_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-crypto_libbubcoin_crypto_shani_a_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libbubcoin_crypto_shani_a_CXXFLAGS += $(SHANI_CXXFLAGS)
-crypto_libbubcoin_crypto_shani_a_CPPFLAGS += -DENABLE_SHANI
-crypto_libbubcoin_crypto_shani_a_SOURCES = crypto/sha256_shani.cpp
+crypto_libbitcoin_crypto_shani_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+crypto_libbitcoin_crypto_shani_a_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libbitcoin_crypto_shani_a_CXXFLAGS += $(SHANI_CXXFLAGS)
+crypto_libbitcoin_crypto_shani_a_CPPFLAGS += -DENABLE_SHANI
+crypto_libbitcoin_crypto_shani_a_SOURCES = crypto/sha256_shani.cpp
 
 # consensus: shared between all executables that validate any consensus rules.
-libbubcoin_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BUBCOIN_INCLUDES)
-libbubcoin_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbubcoin_consensus_a_SOURCES = \
+libbitcoin_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libbitcoin_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbitcoin_consensus_a_SOURCES = \
   amount.h \
   arith_uint256.cpp \
   arith_uint256.h \
@@ -514,7 +514,7 @@ libbubcoin_consensus_a_SOURCES = \
   primitives/transaction.h \
   pubkey.cpp \
   pubkey.h \
-  script/bubcoinconsensus.cpp \
+  script/bitcoinconsensus.cpp \
   script/interpreter.cpp \
   script/interpreter.h \
   script/script.cpp \
@@ -530,10 +530,10 @@ libbubcoin_consensus_a_SOURCES = \
   util/strencodings.h \
   version.h
 
-# common: shared between bubcoind, and bubcoin-qt and non-server tools
-libbubcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BUBCOIN_INCLUDES)
-libbubcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbubcoin_common_a_SOURCES = \
+# common: shared between bitcoind, and bitcoin-qt and non-server tools
+libbitcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libbitcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbitcoin_common_a_SOURCES = \
   base58.cpp \
   bech32.cpp \
   bloom.cpp \
@@ -565,14 +565,14 @@ libbubcoin_common_a_SOURCES = \
   script/signingprovider.cpp \
   script/standard.cpp \
   warnings.cpp \
-  $(BUBCOIN_CORE_H)
+  $(BITCOIN_CORE_H)
 
 # util: shared between all executables.
 # This library *must* be included to make sure that the glibc
 # backward-compatibility objects and their sanity checks are linked.
-libbubcoin_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(BUBCOIN_INCLUDES)
-libbubcoin_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbubcoin_util_a_SOURCES = \
+libbitcoin_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libbitcoin_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbitcoin_util_a_SOURCES = \
   support/lockedpool.cpp \
   chainparamsbase.cpp \
   clientversion.cpp \
@@ -611,152 +611,152 @@ libbubcoin_util_a_SOURCES = \
   util/string.cpp \
   util/time.cpp \
   util/tokenpipe.cpp \
-  $(BUBCOIN_CORE_H)
+  $(BITCOIN_CORE_H)
 
 if USE_LIBEVENT
-libbubcoin_util_a_SOURCES += util/url.cpp
+libbitcoin_util_a_SOURCES += util/url.cpp
 endif
 
 if GLIBC_BACK_COMPAT
-libbubcoin_util_a_SOURCES += compat/glibc_compat.cpp
+libbitcoin_util_a_SOURCES += compat/glibc_compat.cpp
 AM_LDFLAGS += $(COMPAT_LDFLAGS)
 endif
 
-# cli: shared between bubcoin-cli and bubcoin-qt
-libbubcoin_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BUBCOIN_INCLUDES)
-libbubcoin_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbubcoin_cli_a_SOURCES = \
+# cli: shared between bitcoin-cli and bitcoin-qt
+libbitcoin_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libbitcoin_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbitcoin_cli_a_SOURCES = \
   compat/stdin.h \
   compat/stdin.cpp \
   rpc/client.cpp \
-  $(BUBCOIN_CORE_H)
+  $(BITCOIN_CORE_H)
 
-nodist_libbubcoin_util_a_SOURCES = $(srcdir)/obj/build.h
+nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# bubcoind & bubcoin-node binaries #
-bubcoin_daemon_sources = bubcoind.cpp
-bubcoin_bin_cppflags = $(AM_CPPFLAGS) $(BUBCOIN_INCLUDES)
-bubcoin_bin_cxxflags = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bubcoin_bin_ldflags = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+# bitcoind & bitcoin-node binaries #
+bitcoin_daemon_sources = bitcoind.cpp
+bitcoin_bin_cppflags = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+bitcoin_bin_cxxflags = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bitcoin_bin_ldflags = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
 if TARGET_WINDOWS
-bubcoin_daemon_sources += bubcoind-res.rc
+bitcoin_daemon_sources += bitcoind-res.rc
 endif
 
-bubcoin_bin_ldadd = \
-  $(LIBBUBCOIN_WALLET) \
-  $(LIBBUBCOIN_COMMON) \
-  $(LIBBUBCOIN_UTIL) \
+bitcoin_bin_ldadd = \
+  $(LIBBITCOIN_WALLET) \
+  $(LIBBITCOIN_COMMON) \
+  $(LIBBITCOIN_UTIL) \
   $(LIBUNIVALUE) \
-  $(LIBBUBCOIN_ZMQ) \
-  $(LIBBUBCOIN_CONSENSUS) \
-  $(LIBBUBCOIN_CRYPTO) \
+  $(LIBBITCOIN_ZMQ) \
+  $(LIBBITCOIN_CONSENSUS) \
+  $(LIBBITCOIN_CRYPTO) \
   $(LIBLEVELDB) \
   $(LIBLEVELDB_SSE42) \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-bubcoin_bin_ldadd += $(BOOST_LIBS) $(BDB_LIBS) $(MINIUPNPC_LIBS) $(NATPMP_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS) $(SQLITE_LIBS)
+bitcoin_bin_ldadd += $(BOOST_LIBS) $(BDB_LIBS) $(MINIUPNPC_LIBS) $(NATPMP_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS) $(SQLITE_LIBS)
 
-bubcoind_SOURCES = $(bubcoin_daemon_sources) init/bubcoind.cpp
-bubcoind_CPPFLAGS = $(bubcoin_bin_cppflags)
-bubcoind_CXXFLAGS = $(bubcoin_bin_cxxflags)
-bubcoind_LDFLAGS = $(bubcoin_bin_ldflags)
-bubcoind_LDADD = $(LIBBUBCOIN_SERVER) $(bubcoin_bin_ldadd)
+bitcoind_SOURCES = $(bitcoin_daemon_sources) init/bitcoind.cpp
+bitcoind_CPPFLAGS = $(bitcoin_bin_cppflags)
+bitcoind_CXXFLAGS = $(bitcoin_bin_cxxflags)
+bitcoind_LDFLAGS = $(bitcoin_bin_ldflags)
+bitcoind_LDADD = $(LIBBITCOIN_SERVER) $(bitcoin_bin_ldadd)
 
-bubcoin_node_SOURCES = $(bubcoin_daemon_sources) init/bubcoin-node.cpp
-bubcoin_node_CPPFLAGS = $(bubcoin_bin_cppflags)
-bubcoin_node_CXXFLAGS = $(bubcoin_bin_cxxflags)
-bubcoin_node_LDFLAGS = $(bubcoin_bin_ldflags)
-bubcoin_node_LDADD = $(LIBBUBCOIN_SERVER) $(bubcoin_bin_ldadd) $(LIBBUBCOIN_IPC) $(LIBMULTIPROCESS_LIBS)
+bitcoin_node_SOURCES = $(bitcoin_daemon_sources) init/bitcoin-node.cpp
+bitcoin_node_CPPFLAGS = $(bitcoin_bin_cppflags)
+bitcoin_node_CXXFLAGS = $(bitcoin_bin_cxxflags)
+bitcoin_node_LDFLAGS = $(bitcoin_bin_ldflags)
+bitcoin_node_LDADD = $(LIBBITCOIN_SERVER) $(bitcoin_bin_ldadd) $(LIBBITCOIN_IPC) $(LIBMULTIPROCESS_LIBS)
 
-# bubcoin-cli binary #
-bubcoin_cli_SOURCES = bubcoin-cli.cpp
-bubcoin_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BUBCOIN_INCLUDES) $(EVENT_CFLAGS)
-bubcoin_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bubcoin_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+# bitcoin-cli binary #
+bitcoin_cli_SOURCES = bitcoin-cli.cpp
+bitcoin_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+bitcoin_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bitcoin_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
 if TARGET_WINDOWS
-bubcoin_cli_SOURCES += bubcoin-cli-res.rc
+bitcoin_cli_SOURCES += bitcoin-cli-res.rc
 endif
 
-bubcoin_cli_LDADD = \
-  $(LIBBUBCOIN_CLI) \
+bitcoin_cli_LDADD = \
+  $(LIBBITCOIN_CLI) \
   $(LIBUNIVALUE) \
-  $(LIBBUBCOIN_UTIL) \
-  $(LIBBUBCOIN_CRYPTO)
+  $(LIBBITCOIN_UTIL) \
+  $(LIBBITCOIN_CRYPTO)
 
-bubcoin_cli_LDADD += $(BOOST_LIBS) $(EVENT_LIBS)
+bitcoin_cli_LDADD += $(BOOST_LIBS) $(EVENT_LIBS)
 #
 
-# bubcoin-tx binary #
-bubcoin_tx_SOURCES = bubcoin-tx.cpp
-bubcoin_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BUBCOIN_INCLUDES)
-bubcoin_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bubcoin_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+# bitcoin-tx binary #
+bitcoin_tx_SOURCES = bitcoin-tx.cpp
+bitcoin_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+bitcoin_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bitcoin_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
 if TARGET_WINDOWS
-bubcoin_tx_SOURCES += bubcoin-tx-res.rc
+bitcoin_tx_SOURCES += bitcoin-tx-res.rc
 endif
 
-bubcoin_tx_LDADD = \
+bitcoin_tx_LDADD = \
   $(LIBUNIVALUE) \
-  $(LIBBUBCOIN_COMMON) \
-  $(LIBBUBCOIN_UTIL) \
-  $(LIBBUBCOIN_CONSENSUS) \
-  $(LIBBUBCOIN_CRYPTO) \
+  $(LIBBITCOIN_COMMON) \
+  $(LIBBITCOIN_UTIL) \
+  $(LIBBITCOIN_CONSENSUS) \
+  $(LIBBITCOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-bubcoin_tx_LDADD += $(BOOST_LIBS)
+bitcoin_tx_LDADD += $(BOOST_LIBS)
 #
 
-# bubcoin-wallet binary #
-bubcoin_wallet_SOURCES = bubcoin-wallet.cpp
-bubcoin_wallet_CPPFLAGS = $(bubcoin_bin_cppflags)
-bubcoin_wallet_CXXFLAGS = $(bubcoin_bin_cxxflags)
-bubcoin_wallet_LDFLAGS = $(bubcoin_bin_ldflags)
-bubcoin_wallet_LDADD = $(LIBBUBCOIN_WALLET_TOOL) $(bubcoin_bin_ldadd)
+# bitcoin-wallet binary #
+bitcoin_wallet_SOURCES = bitcoin-wallet.cpp
+bitcoin_wallet_CPPFLAGS = $(bitcoin_bin_cppflags)
+bitcoin_wallet_CXXFLAGS = $(bitcoin_bin_cxxflags)
+bitcoin_wallet_LDFLAGS = $(bitcoin_bin_ldflags)
+bitcoin_wallet_LDADD = $(LIBBITCOIN_WALLET_TOOL) $(bitcoin_bin_ldadd)
 
 if TARGET_WINDOWS
-bubcoin_wallet_SOURCES += bubcoin-wallet-res.rc
+bitcoin_wallet_SOURCES += bitcoin-wallet-res.rc
 endif
 #
 
-# bubcoin-util binary #
-bubcoin_util_SOURCES = bubcoin-util.cpp
-bubcoin_util_CPPFLAGS = $(AM_CPPFLAGS) $(BUBCOIN_INCLUDES)
-bubcoin_util_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bubcoin_util_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+# bitcoin-util binary #
+bitcoin_util_SOURCES = bitcoin-util.cpp
+bitcoin_util_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+bitcoin_util_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bitcoin_util_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
 if TARGET_WINDOWS
-bubcoin_util_SOURCES += bubcoin-util-res.rc
+bitcoin_util_SOURCES += bitcoin-util-res.rc
 endif
 
-bubcoin_util_LDADD = \
-  $(LIBBUBCOIN_COMMON) \
-  $(LIBBUBCOIN_UTIL) \
+bitcoin_util_LDADD = \
+  $(LIBBITCOIN_COMMON) \
+  $(LIBBITCOIN_UTIL) \
   $(LIBUNIVALUE) \
-  $(LIBBUBCOIN_CONSENSUS) \
-  $(LIBBUBCOIN_CRYPTO) \
+  $(LIBBITCOIN_CONSENSUS) \
+  $(LIBBITCOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-bubcoin_util_LDADD += $(BOOST_LIBS)
+bitcoin_util_LDADD += $(BOOST_LIBS)
 #
 
-# bubcoinconsensus library #
-if BUILD_BUBCOIN_LIBS
-include_HEADERS = script/bubcoinconsensus.h
-libbubcoinconsensus_la_SOURCES = support/cleanse.cpp $(crypto_libbubcoin_crypto_base_a_SOURCES) $(libbubcoin_consensus_a_SOURCES)
+# bitcoinconsensus library #
+if BUILD_BITCOIN_LIBS
+include_HEADERS = script/bitcoinconsensus.h
+libbitcoinconsensus_la_SOURCES = support/cleanse.cpp $(crypto_libbitcoin_crypto_base_a_SOURCES) $(libbitcoin_consensus_a_SOURCES)
 
 if GLIBC_BACK_COMPAT
-  libbubcoinconsensus_la_SOURCES += compat/glibc_compat.cpp
+  libbitcoinconsensus_la_SOURCES += compat/glibc_compat.cpp
 endif
 
-libbubcoinconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
-libbubcoinconsensus_la_LIBADD = $(LIBSECP256K1)
-libbubcoinconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BUBCOIN_INTERNAL
-libbubcoinconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbitcoinconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
+libbitcoinconsensus_la_LIBADD = $(LIBSECP256K1)
+libbitcoinconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BITCOIN_INTERNAL
+libbitcoinconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
 endif
 #
@@ -792,12 +792,12 @@ CLEANFILES += obj/build.h
 EXTRA_DIST = $(CTAES_DIST)
 
 
-config/bubcoin-config.h: config/stamp-h1
+config/bitcoin-config.h: config/stamp-h1
 	@$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-config/stamp-h1: $(top_srcdir)/$(subdir)/config/bubcoin-config.h.in $(top_builddir)/config.status
+config/stamp-h1: $(top_srcdir)/$(subdir)/config/bitcoin-config.h.in $(top_builddir)/config.status
 	$(AM_V_at)$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-$(top_srcdir)/$(subdir)/config/bubcoin-config.h.in:  $(am__configure_deps)
-	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/bubcoin-config.h.in
+$(top_srcdir)/$(subdir)/config/bitcoin-config.h.in:  $(am__configure_deps)
+	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/bitcoin-config.h.in
 
 clean-local:
 	-$(MAKE) -C secp256k1 clean
@@ -833,15 +833,15 @@ if HARDEN
 	$(AM_V_at) $(PYTHON) $(top_srcdir)/contrib/devtools/security-check.py $(bin_PROGRAMS)
 endif
 
-libbubcoin_ipc_mpgen_input = \
+libbitcoin_ipc_mpgen_input = \
   ipc/capnp/echo.capnp \
   ipc/capnp/init.capnp
-EXTRA_DIST += $(libbubcoin_ipc_mpgen_input)
+EXTRA_DIST += $(libbitcoin_ipc_mpgen_input)
 %.capnp:
 
 if BUILD_MULTIPROCESS
-LIBBUBCOIN_IPC=libbubcoin_ipc.a
-libbubcoin_ipc_a_SOURCES = \
+LIBBITCOIN_IPC=libbitcoin_ipc.a
+libbitcoin_ipc_a_SOURCES = \
   ipc/capnp/context.h \
   ipc/capnp/init-types.h \
   ipc/capnp/protocol.cpp \
@@ -852,20 +852,20 @@ libbubcoin_ipc_a_SOURCES = \
   ipc/process.cpp \
   ipc/process.h \
   ipc/protocol.h
-libbubcoin_ipc_a_CPPFLAGS = $(AM_CPPFLAGS) $(BUBCOIN_INCLUDES)
-libbubcoin_ipc_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) $(LIBMULTIPROCESS_CFLAGS)
+libbitcoin_ipc_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libbitcoin_ipc_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) $(LIBMULTIPROCESS_CFLAGS)
 
 include $(MPGEN_PREFIX)/include/mpgen.mk
-libbubcoin_ipc_mpgen_output = \
-  $(libbubcoin_ipc_mpgen_input:=.c++) \
-  $(libbubcoin_ipc_mpgen_input:=.h) \
-  $(libbubcoin_ipc_mpgen_input:=.proxy-client.c++) \
-  $(libbubcoin_ipc_mpgen_input:=.proxy-server.c++) \
-  $(libbubcoin_ipc_mpgen_input:=.proxy-types.c++) \
-  $(libbubcoin_ipc_mpgen_input:=.proxy-types.h) \
-  $(libbubcoin_ipc_mpgen_input:=.proxy.h)
-nodist_libbubcoin_ipc_a_SOURCES = $(libbubcoin_ipc_mpgen_output)
-CLEANFILES += $(libbubcoin_ipc_mpgen_output)
+libbitcoin_ipc_mpgen_output = \
+  $(libbitcoin_ipc_mpgen_input:=.c++) \
+  $(libbitcoin_ipc_mpgen_input:=.h) \
+  $(libbitcoin_ipc_mpgen_input:=.proxy-client.c++) \
+  $(libbitcoin_ipc_mpgen_input:=.proxy-server.c++) \
+  $(libbitcoin_ipc_mpgen_input:=.proxy-types.c++) \
+  $(libbitcoin_ipc_mpgen_input:=.proxy-types.h) \
+  $(libbitcoin_ipc_mpgen_input:=.proxy.h)
+nodist_libbitcoin_ipc_a_SOURCES = $(libbitcoin_ipc_mpgen_output)
+CLEANFILES += $(libbitcoin_ipc_mpgen_output)
 endif
 
 if EMBEDDED_LEVELDB

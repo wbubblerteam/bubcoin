@@ -1,12 +1,12 @@
-// Copyright (c) 2011-2020 The Bubcoin Core developers
+// Copyright (c) 2011-2020 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BUBCOIN_QT_PAYMENTSERVER_H
-#define BUBCOIN_QT_PAYMENTSERVER_H
+#ifndef BITCOIN_QT_PAYMENTSERVER_H
+#define BITCOIN_QT_PAYMENTSERVER_H
 
 // This class handles payment requests from clicking on
-// bubcoin: URIs
+// bitcoin: URIs
 //
 // This is somewhat tricky, because we have to deal with
 // the situation where the user clicks on a link during
@@ -33,7 +33,7 @@
 //
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bubcoin-config.h>
+#include <config/bitcoin-config.h>
 #endif
 
 #include <qt/sendcoinsrecipient.h>
@@ -106,4 +106,4 @@ private:
     OptionsModel *optionsModel;
 };
 
-#endif // BUBCOIN_QT_PAYMENTSERVER_H
+#endif // BITCOIN_QT_PAYMENTSERVER_H

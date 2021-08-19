@@ -1,9 +1,9 @@
-// Copyright (c) 2012-2020 The Bubcoin Core developers
+// Copyright (c) 2012-2020 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BUBCOIN_DBWRAPPER_H
-#define BUBCOIN_DBWRAPPER_H
+#ifndef BITCOIN_DBWRAPPER_H
+#define BITCOIN_DBWRAPPER_H
 
 #include <clientversion.h>
 #include <fs.h>
@@ -336,4 +336,4 @@ public:
     }
 };
 
-#endif // BUBCOIN_DBWRAPPER_H
+#endif // BITCOIN_DBWRAPPER_H

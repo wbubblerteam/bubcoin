@@ -1,9 +1,9 @@
-// Copyright (c) 2021 The Bubcoin Core developers
+// Copyright (c) 2021 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BUBCOIN_INTERFACES_INIT_H
-#define BUBCOIN_INTERFACES_INIT_H
+#ifndef BITCOIN_INTERFACES_INIT_H
+#define BITCOIN_INTERFACES_INIT_H
 
 #include <memory>
 
@@ -20,7 +20,7 @@ class WalletClient;
 //! and get access to other interfaces (Node, Chain, Wallet, etc).
 //!
 //! There is a different Init interface implementation for each process
-//! (bubcoin-gui, bubcoin-node, bubcoin-wallet, bubcoind, bubcoin-qt) and each
+//! (bitcoin-gui, bitcoin-node, bitcoin-wallet, bitcoind, bitcoin-qt) and each
 //! implementation can implement the make methods for interfaces it supports.
 //! The default make methods all return null.
 class Init
@@ -49,4 +49,4 @@ std::unique_ptr<Init> MakeWalletInit(int argc, char* argv[], int& exit_status);
 std::unique_ptr<Init> MakeGuiInit(int argc, char* argv[]);
 } // namespace interfaces
 
-#endif // BUBCOIN_INTERFACES_INIT_H
+#endif // BITCOIN_INTERFACES_INIT_H

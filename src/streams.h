@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2020 The Bubcoin Core developers
+// Copyright (c) 2009-2020 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BUBCOIN_STREAMS_H
-#define BUBCOIN_STREAMS_H
+#ifndef BITCOIN_STREAMS_H
+#define BITCOIN_STREAMS_H
 
 #include <serialize.h>
 #include <span.h>
@@ -805,4 +805,4 @@ public:
     }
 };
 
-#endif // BUBCOIN_STREAMS_H
+#endif // BITCOIN_STREAMS_H
