@@ -9,7 +9,7 @@ inkscape --export-type="png" --export-dpi=72 -w 1024 -h 1024 --export-filename="
 convert "bitcoin.png" -define icon:auto-resize=48,32,16,256 "bitcoin.ico"
 convert "bitcoin_testnet.png" -define icon:auto-resize=16,32,48,256 "bitcoin_testnet.ico"
 cd ../../../../share/pixmaps
-PNG_SRC=../../src/qt/res/icons
+PNG_SRC=../../src/qt/res/icons/bitcoin.png
 # Likewise, make this other ico
 convert $PNG_SRC -define icon:auto-resize=256,64,48,32,20,16 "bitcoin.ico"
 # Generate assorted png's and xpm's
