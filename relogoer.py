@@ -1,3 +1,5 @@
+#!/usr/bin/env python3.9
+
 import shutil
 from pathlib import Path
 
@@ -19,6 +21,7 @@ COLOUR_REPLACES_TESTNET = {
 SVG_PATH = Path('src/qt/res/src/bitcoin.svg')
 SVG_PATH_TESTNET = SVG_PATH.with_name('bitcoin_testnet.svg')
 
+
 def main():
     print('Copying svg for testnet icon.')
     shutil.copy(SVG_PATH, SVG_PATH_TESTNET)
@@ -30,3 +33,7 @@ def main():
     command = './relogoer.sh'
     print(command)
     os.system(command)
+
+
+if __name__ == '__main__':
+    main()
