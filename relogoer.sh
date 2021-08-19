@@ -1,8 +1,10 @@
 cd src/qt/res/icons
 # Render svg to png with Inkscape
 inkscape --export-type="png" --export-dpi=72 -w 1024 -h 1024 --export-filename="bitcoin.png" "../src/bitcoin.svg"
+inkscape --export-type="png" --export-dpi=72 -w 1024 -h 1024 --export-filename="bitcoin_testnet.png" "../src/bitcoin_testnet.svg"
 # Use Magick to create ico here with the same sizes, omit antiquitated color depths
 convert "bitcoin.png" -define icon:auto-resize=48,32,16,256 "bitcoin.ico"
+convert "bitcoin_testnet.png" -define icon:auto-resize=16,32,48,256 "bitcoin_testnet.ico"
 cd ../../../../share/pixmaps
 PNG_SRC=../../src/qt/res/icons
 # Likewise, make this other ico
