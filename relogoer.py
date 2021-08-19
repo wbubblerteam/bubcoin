@@ -14,10 +14,10 @@ COLOUR_REPLACES = {
         '#F7931A': '#69BDDE',
     }
 COLOUR_REPLACES_TESTNET = {
-        # Wbubbler light beige
-        '#F9AA4B': '#F4DFCC',
-        # Wbubbler dark beige
-        '#F7931A': '#B29E8B',
+        # Wbubbler medium red
+        '#F9AA4B': '#AB3342',
+        # Wbubbler dark red
+        '#F7931A': '#802A3A',
     }
 SVG_PATH = Path('src/qt/res/src/bitcoin.svg')
 SVG_PATH_TESTNET = SVG_PATH.with_name('bitcoin_testnet.svg')
