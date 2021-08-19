@@ -14,8 +14,8 @@ COLOUR_REPLACES = {
         '#F7931A': '#69BDDE',
     }
 COLOUR_REPLACES_TESTNET = {
-        # Wbubbler medium beige
-        '#F9AA4B': '#F1D4BB',
+        # Wbubbler dark beige
+        '#F9AA4B': '#B29E8B',
         # Wbubbler light beige
         '#F7931A': '#F4DFCC',
     }
