@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 cd src/qt/res/icons
 # Render svg to png with Inkscape
