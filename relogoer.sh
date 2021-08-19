@@ -1,3 +1,6 @@
+#!/bin/bash
+set -x
+
 cd src/qt/res/icons
 # Render svg to png with Inkscape
 inkscape --export-type="png" --export-dpi=72 -w 1024 -h 1024 --export-filename="bitcoin.png" "../src/bitcoin.svg"
