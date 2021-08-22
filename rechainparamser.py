@@ -13,6 +13,7 @@ CHECKPOINTS_RE = re.compile(
     # todo
     r'checkpointData = \{\s*{(\s*\{.*\}\,)*\s*\}\s*\};'
 )
+EMPTY_CHECKPOINTS = """checkpointData = {{}};"""
 REPLACES_PARAMS = {
     # genesis timestamp string
     'The Times 03/Jan/2009 Chancellor on '
@@ -23,7 +24,7 @@ REPLACES_PARAMS = {
     '04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1'
     'f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f':
     '04b370600b143e9e7db6206de8dbdefdf109e8fe44ac343f6e07da71d0a'
-    '94bc4c7552aadab878c0bbfa8354d15efab72084951060df7a81087731c83037370551d'
+    '94bc4c7552aadab878c0bbfa8354d15efab72084951060df7a81087731c83037370551d',
     # genesis posix timestamp
     '1231006505': '1629119093',
     # genesis hash nonce
@@ -42,8 +43,11 @@ def replace_params(chainparams: str) -> str:
 
     # remove seed dns servers
     modified = re.sub(EMPLACE_RE, '', modified)
+    modified = re.sub(CHECKPOINTS_RE, EMPTY_CHECKPOINTS, modified)
+    for key, value in REPLACES_PARAMS.items():
+        modified = modified.replace(key, value)
     
-    return modified_chainparams
+    return modified
 
 
 def main():
