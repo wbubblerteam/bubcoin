@@ -11,7 +11,6 @@ EMPLACE_RE = re.compile(
     re.MULTILINE
 )
 CHECKPOINTS_RE = re.compile(
-    # todo
     r'checkpointData = \{\s*{(\s*\{.*\}\,)*\s*\}\s*\};'
 )
 EMPTY_CHECKPOINTS = """checkpointData = {{}};"""
@@ -36,6 +35,15 @@ REPLACES_PARAMS = {
     # genesis byteswapped merkle hash
     '3ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a':
     'cd28bcbab1701dd8f32aec2a5f7b0c8ff4fcd56ac794ceb95a63751f67c5abd3',
+}
+# todo: implement replacement for these
+REPLACES_PCHMS = {
+    # main
+    'f9beb4d9': 'ffdfdcfe',
+    # testnet
+    '0b110907': 'abd3bfa5',
+    # signet
+    'fabfb5da': 'a9cdccff',
 }
 
 
