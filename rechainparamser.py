@@ -1,5 +1,6 @@
 #!/usr/bin/env python3.9
 
+import random
 import re
 from pathlib import Path
 
@@ -36,6 +37,47 @@ REPLACES_PARAMS = {
     '3ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a':
     'cd28bcbab1701dd8f32aec2a5f7b0c8ff4fcd56ac794ceb95a63751f67c5abd3',
 }
+
+
+def validate_decodeable(
+    message: bytes, encoding: str
+) -> bool:
+    try:
+        message.decode(encoding=encoding)
+    except UnicodeDecodeError:
+        return False
+    else:
+        return True
+
+def validate_pchmessagestart(
+    pchms: bytes, lower_bound: int = (2**32)//2
+) -> bool:
+    # check that pchms is invalid ascii
+    if validate_decodeable(pchms, 'ascii'):
+        return False
+    # check that pchms is valid latin_1
+    if not validate_decodeable(pchms, 'latin_1'):
+        return False
+    # validate that pchms is invalid unicode
+    if validate_decodeable(pchms, 'utf_8'):
+        return False
+
+    # check that pchms produces a large 32-bit integer with any alignment
+    for byteorder in ['big', 'little']:
+        if int.from_bytes(pchms, byteorder) < lower_bound:
+            return False
+    
+    return True
+
+
+def random_pchmessagestart() -> bytes:
+    random.seed()
+    
+    while True:
+        int_array = [random.randrange(128, 256) for i in range(4)]
+        pchms_candidate = bytes(int_array)
+        if validate_pchmessagestart(pchms_candidate):
+            return pchms_candidate
 
 
 def replace_params(chainparams: str) -> str:
