@@ -1,5 +1,6 @@
 #!/usr/bin/env python3.9
 
+import hashlib
 import subprocess
 import sys
 import concurrent.futures
@@ -8,9 +9,9 @@ from typing import List
 
 
 REPLACES = {
-        'bitcoin': 'bubcoin',
-        'btc': 'bub',
-    }
+    'bitcoin': 'bubcoin',
+    'btc': 'bub',
+}
 
 
 def casereplace(text: str, old: str, new: str) -> str:
@@ -31,10 +32,19 @@ def multireplace(text: str, mapping: dict) -> str:
     return text
 
 
-def filereplace(filepath: Path, mapping: dict = REPLACES):
+def filereplace(
+    filepath: Path, ignore_content: dict, mapping: dict = REPLACES
+):
     with open(filepath, encoding='utf-8') as file:
         content = file.read()
-    content_replaced = multireplace(content, mapping)
+
+    content_replaced = multireplace(content, ignore_content)
+    content_replaced = multireplace(content_replaced, mapping)
+    # there's an issue with case here but whatever
+    content_replaced = multireplace(
+        content_replaced, {v: k for k, v in ignore_content.items()}
+    )
+    
     if content != content_replaced:
         print(f'Content: {filepath}')
         with open(filepath, 'w', encoding='utf-8') as file:
@@ -65,7 +75,7 @@ def check_ignore(files: List[Path]) -> List[Path]:
 
 def recurse(
     directory: Path, threadpool: concurrent.futures.ThreadPoolExecutor,
-    ignore: List[Path]
+    ignore: List[Path], ignore_content: dict
 ):
     iterdir_list = list(directory.iterdir())
     ignored_paths = check_ignore(iterdir_list) + ignore
@@ -77,9 +87,9 @@ def recurse(
         
         path = pathrename(path)
         if path.is_dir():
-            recurse(path, threadpool, ignore)
+            recurse(path, threadpool, ignore, ignore_content)
         else:
-            threadpool.submit(filereplace, path)
+            threadpool.submit(filereplace, path, ignore_content)
 
 
 def main():
@@ -89,8 +99,7 @@ def main():
     
     threadpool = concurrent.futures.ThreadPoolExecutor()
     cwd = Path().resolve()
-    # todo: ignore specific phrases like the name BtcDrak
-    # todo: ignore copyright notes, for legal reasons
+
     ignore_str = [
         __file__,
         '.git',
@@ -98,9 +107,23 @@ def main():
         'test/functional/wallet_taproot.py',
     ]
     ignore_path = [Path(p).resolve() for p in ignore_str]
+    
+    ignore_content = [
+        'The Bitcion Core developers',
+        'Bitcoin Developers',
+        'BtcDrak'
+    ]
+    ignore_content_hashes = {}
+    for i in ignore_content:
+        h = hashlib.md5()
+        h.update(i.encode('utf_8'))
+        ignore_content_hashes[i] = h.digest().hex()
+    
     # always do gitignore first
-    filereplace(Path('.gitignore'))
-    recurse(cwd, threadpool, ignore_path)
+    filereplace(Path('.gitignore'), {})
+    recurse(cwd, threadpool, ignore_path, ignore_content_hashes)
+
+    threadpool.shutdown()
 
 
 if __name__ == '__main__':
