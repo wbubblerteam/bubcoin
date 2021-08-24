@@ -45,6 +45,7 @@ REPLACES_PCHMS = {
     # signet
     'fabfb5da': 'a9cdccff',
 }
+PCHMS_FORMAT = 'pchMessageStart[{}] = 0x{:x};'
 
 
 def validate_decodeable(
@@ -88,14 +89,35 @@ def random_pchmessagestart() -> bytes:
             return pchms_candidate
 
 
+def replace_pchms(chainparams: str) -> str:
+    modified = chainparams
+    mapping = REPLACES_PCHMS
+
+    for key, value in mapping.items():
+        old_bytes = bytes.fromhex(key)
+        new_bytes = bytes.fromhex(value)
+
+        for i in range(len(old_bytes)):
+            old_declare = PCHMS_FORMAT.format(i, old_bytes[i])
+            new_declare = PCHMS_FORMAT.format(i, new_bytes[i])
+            modified = modified.replace(old_declare, new_declare)
+
+    return modified
+        
+
+
 def replace_params(chainparams: str) -> str:
     modified = chainparams
 
     # remove seed dns servers
     modified = re.sub(EMPLACE_RE, '', modified)
+    # remove chain checkpoints
     modified = re.sub(CHECKPOINTS_RE, EMPTY_CHECKPOINTS, modified)
+    # replace genesis block stuff
     for key, value in REPLACES_PARAMS.items():
         modified = modified.replace(key, value)
+    # replace message start strings
+    modified = replace_pchms(modified)
     
     return modified
 
@@ -105,6 +127,7 @@ def main():
         chainparams_source = chainparams_file.read()
 
     modified_chainparams_source = replace_params(chainparams_source)
+    
 
     with open(CHAINPARAMS_CPP_PATH, 'w') as chainparams_file:
         chainparams_file.write(modified_chainparams_source)
