@@ -109,7 +109,7 @@ def main():
     ignore_path = [Path(p).resolve() for p in ignore_str]
     
     ignore_content = [
-        'The Bitcion Core developers',
+        'The Bitcoin Core developers',
         'Bitcoin Developers',
         'BtcDrak'
     ]
