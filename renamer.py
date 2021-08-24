@@ -103,15 +103,14 @@ def main():
     ignore_str = [
         __file__,
         '.git',
-        'contrib/builder-keys/keys.txt',
-        'test/functional/wallet_taproot.py',
     ]
     ignore_path = [Path(p).resolve() for p in ignore_str]
     
     ignore_content = [
         'The Bitcoin Core developers',
         'Bitcoin Developers',
-        'BtcDrak'
+        'BtcDrak',
+        '"xpub": "tpubD6NzVbkrYhZ4Wo2WcFSgSqRD9QWkGxddo6WSqsVBx7uQ8QEtM7WncKDRjhFEexK119NigyCsFygA4b7sAPQxqebyFGAZ9XVV1BtcgNzbCRR"'
     ]
     ignore_content_hashes = {}
     for i in ignore_content:
