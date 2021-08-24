@@ -5,7 +5,7 @@ import subprocess
 import sys
 import concurrent.futures
 from pathlib import Path
-from typing import List
+from typing import List, Callable
 
 
 REPLACES = {
@@ -26,9 +26,11 @@ def casereplace(text: str, old: str, new: str) -> str:
     return text
 
 
-def multireplace(text: str, mapping: dict) -> str:
+def multireplace(
+    text: str, mapping: dict, replacer: Callable = casereplace
+) -> str:
     for key, value in mapping.items():
-        text = casereplace(text, key, value)
+        text = replacer(text, key, value)
     return text
 
 
@@ -38,11 +40,12 @@ def filereplace(
     with open(filepath, encoding='utf-8') as file:
         content = file.read()
 
-    content_replaced = multireplace(content, ignore_content)
+    content_replaced = multireplace(content, ignore_content, str.replace)
     content_replaced = multireplace(content_replaced, mapping)
-    # there's an issue with case here but whatever
     content_replaced = multireplace(
-        content_replaced, {v: k for k, v in ignore_content.items()}
+        content_replaced,
+        {v: k for k, v in ignore_content.items()},
+        str.replace
     )
     
     if content != content_replaced:
@@ -110,7 +113,8 @@ def main():
         'The Bitcoin Core developers',
         'Bitcoin Developers',
         'BtcDrak',
-        '"xpub": "tpubD6NzVbkrYhZ4Wo2WcFSgSqRD9QWkGxddo6WSqsVBx7uQ8QEtM7WncKDRjhFEexK119NigyCsFygA4b7sAPQxqebyFGAZ9XVV1BtcgNzbCRR"'
+        'btcdrak',
+        'AZ9XVV1BtcgNzbCRR'
     ]
     ignore_content_hashes = {}
     for i in ignore_content:
