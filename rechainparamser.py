@@ -45,7 +45,7 @@ REPLACES_PCHMS = {
     # signet
     'fabfb5da': 'a9cdccff',
 }
-PCHMS_FORMAT = 'pchMessageStart[{}] = 0x{:x};'
+PCHMS_FORMAT = 'pchMessageStart[{}] = 0x{:02x};'
 
 
 def validate_decodeable(
