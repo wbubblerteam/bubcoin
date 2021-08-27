@@ -5,8 +5,8 @@
 /**
  * Functionality for communicating with Tor.
  */
-#ifndef BITCOIN_TORCONTROL_H
-#define BITCOIN_TORCONTROL_H
+#ifndef BUBCOIN_TORCONTROL_H
+#define BUBCOIN_TORCONTROL_H
 
 #include <string>
 
@@ -21,4 +21,4 @@ void StopTorControl();
 
 CService DefaultOnionServiceTarget();
 
-#endif /* BITCOIN_TORCONTROL_H */
+#endif /* BUBCOIN_TORCONTROL_H */

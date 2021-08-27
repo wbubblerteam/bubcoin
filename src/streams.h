@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_STREAMS_H
-#define BITCOIN_STREAMS_H
+#ifndef BUBCOIN_STREAMS_H
+#define BUBCOIN_STREAMS_H
 
 #include <support/allocators/zeroafterfree.h>
 #include <serialize.h>
@@ -843,4 +843,4 @@ public:
     }
 };
 
-#endif // BITCOIN_STREAMS_H
+#endif // BUBCOIN_STREAMS_H

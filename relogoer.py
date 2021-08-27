@@ -19,8 +19,8 @@ COLOUR_REPLACES_TESTNET = {
         # Wbubbler dark red
         '#F7931A': '#802A3A',
     }
-SVG_PATH = Path('src/qt/res/src/bitcoin.svg')
-SVG_PATH_TESTNET = SVG_PATH.with_name('bitcoin_testnet.svg')
+SVG_PATH = Path('src/qt/res/src/bubcoin.svg')
+SVG_PATH_TESTNET = SVG_PATH.with_name('bubcoin_testnet.svg')
 
 
 def main():

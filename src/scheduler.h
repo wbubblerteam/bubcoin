@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_SCHEDULER_H
-#define BITCOIN_SCHEDULER_H
+#ifndef BUBCOIN_SCHEDULER_H
+#define BUBCOIN_SCHEDULER_H
 
 #include <condition_variable>
 #include <functional>

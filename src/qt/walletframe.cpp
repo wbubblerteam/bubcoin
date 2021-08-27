@@ -4,7 +4,7 @@
 
 #include <qt/walletframe.h>
 
-#include <qt/bitcoingui.h>
+#include <qt/bubcoingui.h>
 #include <qt/createwalletdialog.h>
 #include <qt/overviewpage.h>
 #include <qt/walletcontroller.h>
@@ -19,7 +19,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 
-WalletFrame::WalletFrame(const PlatformStyle* _platformStyle, BitcoinGUI* _gui)
+WalletFrame::WalletFrame(const PlatformStyle* _platformStyle, BubcoinGUI* _gui)
     : QFrame(_gui),
       gui(_gui),
       platformStyle(_platformStyle),
@@ -89,15 +89,15 @@ bool WalletFrame::addWallet(WalletModel *walletModel)
     mapWalletViews[walletModel] = walletView;
 
     connect(walletView, &WalletView::outOfSyncWarningClicked, this, &WalletFrame::outOfSyncWarningClicked);
-    connect(walletView, &WalletView::transactionClicked, gui, &BitcoinGUI::gotoHistoryPage);
-    connect(walletView, &WalletView::coinsSent, gui, &BitcoinGUI::gotoHistoryPage);
+    connect(walletView, &WalletView::transactionClicked, gui, &BubcoinGUI::gotoHistoryPage);
+    connect(walletView, &WalletView::coinsSent, gui, &BubcoinGUI::gotoHistoryPage);
     connect(walletView, &WalletView::message, [this](const QString& title, const QString& message, unsigned int style) {
         gui->message(title, message, style);
     });
-    connect(walletView, &WalletView::encryptionStatusChanged, gui, &BitcoinGUI::updateWalletStatus);
-    connect(walletView, &WalletView::incomingTransaction, gui, &BitcoinGUI::incomingTransaction);
-    connect(walletView, &WalletView::hdEnabledStatusChanged, gui, &BitcoinGUI::updateWalletStatus);
-    connect(gui, &BitcoinGUI::setPrivacy, walletView, &WalletView::setPrivacy);
+    connect(walletView, &WalletView::encryptionStatusChanged, gui, &BubcoinGUI::updateWalletStatus);
+    connect(walletView, &WalletView::incomingTransaction, gui, &BubcoinGUI::incomingTransaction);
+    connect(walletView, &WalletView::hdEnabledStatusChanged, gui, &BubcoinGUI::updateWalletStatus);
+    connect(gui, &BubcoinGUI::setPrivacy, walletView, &WalletView::setPrivacy);
 
     return true;
 }
