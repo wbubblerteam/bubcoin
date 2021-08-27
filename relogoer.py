@@ -27,8 +27,8 @@ def main():
     print('Copying svg for testnet icon.')
     shutil.copy(SVG_PATH, SVG_PATH_TESTNET)
     print("Replacing colours in svg's.")
-    renamer.filereplace(SVG_PATH, COLOUR_REPLACES)
-    renamer.filereplace(SVG_PATH_TESTNET, COLOUR_REPLACES_TESTNET)
+    renamer.filereplace(SVG_PATH, mapping=COLOUR_REPLACES)
+    renamer.filereplace(SVG_PATH_TESTNET, mapping=COLOUR_REPLACES_TESTNET)
     print('Requires: inkscape, ImageMagick (convert).')
     print('icns sucks, do it yourself.')
     command = './relogoer.sh'
