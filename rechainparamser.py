@@ -26,14 +26,14 @@ REPLACES_PARAMS = {
     '04b370600b143e9e7db6206de8dbdefdf109e8fe44ac343f6e07da71d0a'
     '94bc4c7552aadab878c0bbfa8354d15efab72084951060df7a81087731c83037370551d',
     # genesis posix timestamp
-    '1231006505': '1629119093',
+    '1231006505': '1629119094',
     # genesis hash nonce
     '2083236893': '737906790',
     # genesis block hash
     '000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f':
     '00000000e51e0da00b4542726acf5385ff14ec7378e7ebf641eedc976d851aa1',
     # genesis byteswapped merkle hash
-    '3ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a':
+    '4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b':
     'cd28bcbab1701dd8f32aec2a5f7b0c8ff4fcd56ac794ceb95a63751f67c5abd3',
 }
 # todo: implement replacement for these
