@@ -53,7 +53,7 @@ REPLACES_PARAMS = {
     # genesis posix timestamp - regtest
     '1296688602': '1630244946',
     # genesis hash nonce - regtest
-    f'1296688602, 2, 0x207fffff': '1296688602, 2740078694, 0x207fffff',
+    f', 2, 0x207fffff': ', 2740078694, 0x207fffff',
     # genesis block hash - regtest
     '0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206':
     '000000003d49fe40c7818e54e301abf36d24969fc7f534d7943d7a55b85b1b21',
