@@ -27,7 +27,7 @@ What is Bubcoin?
 
 Bubcoin is a joke cryptocurrency for trading with your friends, and some scripts for automatically creating your own version with your own name, logo recolour, and genesis block message.
 
-Forked from the bitcoin core software github.com/bitcoin/bitcoin/
+Forked from the bitcoin core software https://github.com/bitcoin/bitcoin/
 
 NAME: Bubcoin    
 CODE: BUB    
