@@ -44,5 +44,11 @@ Development Process
 
 Bubcoin is a bitcoin core knockoff. The latest stable release tag is cloned from the upstream repo to a branch like [0.21.1](https://github.com/wbubblerteam/bubcoin/tree/0.21.1). This is then merged into [latest](https://github.com/wbubblerteam/bubcoin/tree/latest). Manual modifications are made to parameters like proof of work difficulty, The scripts are used for automatically renaming everything and replacing parameters like the genesis block hash, and merge conflicts are resolved. When it's stable it's merged into the main branch.
 
+Scripts:
+- [renamer](https://github.com/wbubblerteam/bubcoin/blob/main/renamer.py)
+- [logo svg colour replacer](https://github.com/wbubblerteam/bubcoin/blob/main/relogoer.py)
+- [logo renderer](https://github.com/wbubblerteam/bubcoin/blob/main/relogoer.sh)
+- [chain parameter replacer](https://github.com/wbubblerteam/bubcoin/blob/main/rechainparamser.py)
+
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md)
 and useful hints for developers can be found in [doc/developer-notes.md](doc/developer-notes.md).
