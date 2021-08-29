@@ -14,6 +14,7 @@ CHECKPOINTS_RE = re.compile(
     r'checkpointData = \{\s*{(\s*\{.*\}\,)*\s*\}\s*\};'
 )
 EMPTY_CHECKPOINTS = """checkpointData = {{}};"""
+
 REPLACES_PARAMS = {
     # genesis timestamp string
     'The Times 03/Jan/2009 Chancellor on '
@@ -25,6 +26,9 @@ REPLACES_PARAMS = {
     'f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f':
     '04b370600b143e9e7db6206de8dbdefdf109e8fe44ac343f6e07da71d0a'
     '94bc4c7552aadab878c0bbfa8354d15efab72084951060df7a81087731c83037370551d',
+    # genesis byteswapped merkle hash
+    '4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b':
+    'cd28bcbab1701dd8f32aec2a5f7b0c8ff4fcd56ac794ceb95a63751f67c5abd3',
     # genesis posix timestamp
     '1231006505': '1629119094',
     # genesis hash nonce
@@ -32,11 +36,30 @@ REPLACES_PARAMS = {
     # genesis block hash
     '000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f':
     '00000000e51e0da00b4542726acf5385ff14ec7378e7ebf641eedc976d851aa1',
-    # genesis byteswapped merkle hash
-    '4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b':
-    'cd28bcbab1701dd8f32aec2a5f7b0c8ff4fcd56ac794ceb95a63751f67c5abd3',
+    # genesis posix timestamp - testnet
+    '1296688602': '1630243004',
+    # genesis hash nonce - testnet
+    '414098458': '1641117563',
+    # genesis block hash - testnet
+    '000000000933ea01ad0ee984209779baaec3ced90fa3f408719526f8d77f4943':
+    '00000000715f204787feb4ec83bbd4c012c728227f6b69400098229ec520a622',
+    # genesis posix timestamp - signet
+    '1598918400': '1630244482',
+    # genesis hash nonce - signet
+    '52613770': '518570106',
+    # genesis block hash - signet
+    '00000008819873e925422c1ff0f99f7cc9bbb232af63a077a480a3633bee1ef6':
+    '00000000dbf6a5ba6fadc6562521cfc4abbe034834950ea3478e6a5ed5facd27',
+    # genesis posix timestamp - regtest
+    '1296688602': '1630244946',
+    # genesis hash nonce - regtest
+    f'1296688602, 2, 0x207fffff': '1296688602, 2740078694, 0x207fffff',
+    # genesis block hash - regtest
+    '0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206':
+    '000000003d49fe40c7818e54e301abf36d24969fc7f534d7943d7a55b85b1b21',
 }
-# todo: implement replacement for these
+
+PCHMS_FORMAT = 'pchMessageStart[{}] = 0x{:02x};'
 REPLACES_PCHMS = {
     # main
     'f9beb4d9': 'ffdfdcfe',
@@ -45,7 +68,7 @@ REPLACES_PCHMS = {
     # signet
     'fabfb5da': 'a9cdccff',
 }
-PCHMS_FORMAT = 'pchMessageStart[{}] = 0x{:02x};'
+
 
 
 def validate_decodeable(
