@@ -17,7 +17,7 @@ Disclaimer
 
 Cyrptocurrency sucks ass!!    
 This is a joke    
-It's worthless and low power consumption because it's got low proof of work difficulty
+It's worthless and low power consumption because it's got low proof of work difficulty    
 Praise be to bub
 
 What
@@ -29,8 +29,8 @@ Bubcoin is a joke cryptocurrency for trading with your friends, and some scripts
 
 Forked from the bitcoin core software github.com/bitcoin/bitcoin/
 
-NAME: Bubcoin
-CODE: BUB
+NAME: Bubcoin    
+CODE: BUB    
 CODE ISO4217: XUB
 
 License
