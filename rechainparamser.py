@@ -44,20 +44,21 @@ REPLACES_PARAMS = {
     # genesis block hash - testnet
     '000000000933ea01ad0ee984209779baaec3ced90fa3f408719526f8d77f4943':
     '00000000715f204787feb4ec83bbd4c012c728227f6b69400098229ec520a622',
+    # could adjust the difficulty on these but cba to adjust genesisgen more
     # genesis posix timestamp - signet
-    '1598918400': '1630244482',
+    '1598918400': '1630262260',
     # genesis hash nonce - signet
-    '52613770': '518570106',
+    '52613770': '1725398818',
     # genesis block hash - signet
     '00000008819873e925422c1ff0f99f7cc9bbb232af63a077a480a3633bee1ef6':
-    '00000000dbf6a5ba6fadc6562521cfc4abbe034834950ea3478e6a5ed5facd27',
+    '0000000071d537e93d6dfcfb5f35771f0ef22866490c26087863eb6c87428e22',
     # genesis posix timestamp - regtest
     '1296688602': '1630243004',
     # genesis hash nonce - regtest
-    f', 2, 0x207fffff': ', 2504898778, 0x207fffff',
+    f', 2, 0x207fffff': ', 3552514569, 0x207fffff',
     # genesis block hash - regtest
     '0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206':
-    '00000000c1ba82e3b09c92840709f6f699ddcccd4475a9a965b3b03719824961',
+    '000000006a0a10c2cc9141a856136b15e43b425ab04b4776c5244430740e796c',
 }
 
 PCHMS_FORMAT = 'pchMessageStart[{}] = 0x{:02x};'
