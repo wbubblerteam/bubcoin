@@ -1,80 +1,64 @@
-Bitcoin Core integration/staging tree
-=====================================
+# Bubcoin Core integration/staging tree
 
-https://bitcoincore.org
+http://bit.do/wbubblercore-org
 
-What is Bitcoin?
-----------------
+## What is Bubcoin?
 
-Bitcoin is an experimental digital currency that enables instant payments to
-anyone, anywhere in the world. Bitcoin uses peer-to-peer technology to operate
-with no central authority: managing transactions and issuing money are carried
-out collectively by the network. Bitcoin Core is the name of open source
-software which enables the use of this currency.
+Bubcoin is
 
-For more information, as well as an immediately usable, binary version of
-the Bitcoin Core software, see https://bitcoincore.org/en/download/, or read the
-[original whitepaper](https://bitcoincore.org/bitcoin.pdf).
+For an immediately usable, binary version of
+the Bubcoin Core software, see https://github.com/wbubblerteam/bubcoin/releases, or read the
+[original whitepaper](https://bubcoincore.org/bubcoin.pdf).
 
-License
--------
+## Disclaimer
 
-Bitcoin Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
+Cyrptocurrency sucks ass!!    
+This is a joke    
+It's worthless and low power consumption because it's got low proof of work difficulty    
+Praise be to bub
+
+What
+
+## What is Bubcoin?
+
+Bubcoin is a joke cryptocurrency for trading with your friends, and some scripts for automatically creating your own version with your own name, logo recolour, and genesis block message.
+
+Forked from the bitcoin core software https://github.com/bitcoin/bitcoin/
+
+NAME: Bubcoin    
+CODE: BUB    
+CODE ISO4217: XUB
+
+## License
+
+Bubcoin Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
 
-Development Process
--------------------
+## Development Process
 
-The `master` branch is regularly built (see `doc/build-*.md` for instructions) and tested, but it is not guaranteed to be
-completely stable. [Tags](https://github.com/bitcoin/bitcoin/tags) are created
-regularly from release branches to indicate new official, stable release versions of Bitcoin Core.
+Bubcoin core is a bitcoin core knockoff. The latest stable release tag is cloned from the upstream repo to a branch like upstream-release-0.21.1](https://github.com/wbubblerteam/bubcoin/tree/upstream-release-0.21.1). This is then merged into [upstream-release-latest](https://github.com/wbubblerteam/bubcoin/tree/upstream-release-latest).
 
-The https://github.com/bitcoin-core/gui repository is used exclusively for the
-development of the GUI. Its master branch is identical in all monotree
-repositories. Release branches and tags do not exist, so please do not fork
-that repository unless it is for development reasons.
+From here the branching is a little convoluted:
+### Scripts
+- Scripts are written on the [scripts-latest](https://github.com/wbubblerteam/bubcoin/tree/scripts-latest). The reason is that I originally worked off the upstream master branch - see [scripts-master](https://github.com/wbubblerteam/bubcoin/tree/scripts-master) - before realising I needed to work off a stable release, and rebasing.
+### Manual modifications
+- Manual icon changes are made on the [manual-icons](https://github.com/wbubblerteam/bubcoin/tree/manual-icons) branch. These include the .icns file and the bitmap with altered text.
+- Manual parameter changes are made on the [manual-chainparams](https://github.com/wbubblerteam/bubcoin/tree/manual-chainparams) branch. These include the proof of work difficulty and coin limit.
+- Manual changes to information is made on the [manual-readme](https://github.com/wbubblerteam/bubcoin/tree/manual-readme) branch. Like this here.
+- The [backporting](https://github.com/wbubblerteam/bubcoin/tree/backporting) branch is used for fixes to the release tag to make it buildable, like dead dependency download links.
+### Automatic modifications
+On these branches changes are made automatically using the scripts.
+- [auto-icons](https://github.com/wbubblerteam/bubcoin/tree/auto-icons)
+- [auto-chainparams](https://github.com/wbubblerteam/bubcoin/tree/auto-chainparams)
+- [auto-rename](https://github.com/wbubblerteam/bubcoin/tree/auto-rename)
+
+Finally, all of these branches are merged into [staging](https://github.com/wbubblerteam/bubcoin/tree/staging), and when staging is stable it's merged into the main branch.
+
+Scripts:
+- [renamer](https://github.com/wbubblerteam/bubcoin/blob/main/renamer.py)
+- [logo svg colour replacer](https://github.com/wbubblerteam/bubcoin/blob/main/relogoer.py)
+- [logo renderer](https://github.com/wbubblerteam/bubcoin/blob/main/relogoer.sh)
+- [chain parameter replacer](https://github.com/wbubblerteam/bubcoin/blob/main/rechainparamser.py)
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md)
 and useful hints for developers can be found in [doc/developer-notes.md](doc/developer-notes.md).
-
-Testing
--------
-
-Testing and code review is the bottleneck for development; we get more pull
-requests than we can review and test on short notice. Please be patient and help out by testing
-other people's pull requests, and remember this is a security-critical project where any mistake might cost people
-lots of money.
-
-### Automated Testing
-
-Developers are strongly encouraged to write [unit tests](src/test/README.md) for new code, and to
-submit new unit tests for old code. Unit tests can be compiled and run
-(assuming they weren't disabled in configure) with: `make check`. Further details on running
-and extending unit tests can be found in [/src/test/README.md](/src/test/README.md).
-
-There are also [regression and integration tests](/test), written
-in Python, that are run automatically on the build server.
-These tests can be run (if the [test dependencies](/test) are installed) with: `test/functional/test_runner.py`
-
-The Travis CI system makes sure that every pull request is built for Windows, Linux, and macOS, and that unit/sanity tests are run automatically.
-
-### Manual Quality Assurance (QA) Testing
-
-Changes should be tested by somebody other than the developer who wrote the
-code. This is especially important for large or high-risk changes. It is useful
-to add a test plan to the pull request description if testing the changes is
-not straightforward.
-
-Translations
-------------
-
-Changes to translations as well as new translations can be submitted to
-[Bitcoin Core's Transifex page](https://www.transifex.com/bitcoin/bitcoin/).
-
-Translations are periodically pulled from Transifex and merged into the git repository. See the
-[translation process](doc/translation_process.md) for details on how this works.
-
-**Important**: We do not accept translation changes as GitHub pull requests because the next
-pull from Transifex would automatically overwrite them again.
-
-Translators should also subscribe to the [mailing list](https://groups.google.com/forum/#!forum/bitcoin-translators).
