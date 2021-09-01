@@ -7,8 +7,8 @@
 #include <string>
 #include <vector>
 
-#ifndef BITCOIN_NET_PERMISSIONS_H
-#define BITCOIN_NET_PERMISSIONS_H
+#ifndef BUBCOIN_NET_PERMISSIONS_H
+#define BUBCOIN_NET_PERMISSIONS_H
 
 struct bilingual_str;
 
@@ -71,4 +71,4 @@ public:
     CSubNet m_subnet;
 };
 
-#endif // BITCOIN_NET_PERMISSIONS_H
+#endif // BUBCOIN_NET_PERMISSIONS_H

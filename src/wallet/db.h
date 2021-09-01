@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_WALLET_DB_H
-#define BITCOIN_WALLET_DB_H
+#ifndef BUBCOIN_WALLET_DB_H
+#define BUBCOIN_WALLET_DB_H
 
 #include <clientversion.h>
 #include <fs.h>
@@ -225,4 +225,4 @@ enum class DatabaseStatus {
 
 std::unique_ptr<WalletDatabase> MakeDatabase(const fs::path& path, const DatabaseOptions& options, DatabaseStatus& status, bilingual_str& error);
 
-#endif // BITCOIN_WALLET_DB_H
+#endif // BUBCOIN_WALLET_DB_H

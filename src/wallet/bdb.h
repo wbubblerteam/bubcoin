@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_WALLET_BDB_H
-#define BITCOIN_WALLET_BDB_H
+#ifndef BUBCOIN_WALLET_BDB_H
+#define BUBCOIN_WALLET_BDB_H
 
 #include <clientversion.h>
 #include <fs.h>
@@ -232,4 +232,4 @@ bool ExistsBerkeleyDatabase(const fs::path& path);
 //! Return object giving access to Berkeley database at specified path.
 std::unique_ptr<BerkeleyDatabase> MakeBerkeleyDatabase(const fs::path& path, const DatabaseOptions& options, DatabaseStatus& status, bilingual_str& error);
 
-#endif // BITCOIN_WALLET_BDB_H
+#endif // BUBCOIN_WALLET_BDB_H

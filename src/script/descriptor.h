@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_SCRIPT_DESCRIPTOR_H
-#define BITCOIN_SCRIPT_DESCRIPTOR_H
+#ifndef BUBCOIN_SCRIPT_DESCRIPTOR_H
+#define BUBCOIN_SCRIPT_DESCRIPTOR_H
 
 #include <optional.h>
 #include <outputtype.h>
@@ -158,4 +158,4 @@ std::string GetDescriptorChecksum(const std::string& descriptor);
  */
 std::unique_ptr<Descriptor> InferDescriptor(const CScript& script, const SigningProvider& provider);
 
-#endif // BITCOIN_SCRIPT_DESCRIPTOR_H
+#endif // BUBCOIN_SCRIPT_DESCRIPTOR_H

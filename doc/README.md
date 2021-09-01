@@ -1,41 +1,41 @@
-Bitcoin Core
+Bubcoin Core
 =============
 
 Setup
 ---------------------
-Bitcoin Core is the original Bitcoin client and it builds the backbone of the network. It downloads and, by default, stores the entire history of Bitcoin transactions, which requires a few hundred gigabytes of disk space. Depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
+Bubcoin Core is the original Bubcoin client and it builds the backbone of the network. It downloads and, by default, stores the entire history of Bubcoin transactions, which requires a few hundred gigabytes of disk space. Depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
 
-To download Bitcoin Core, visit [bitcoincore.org](https://bitcoincore.org/en/download/).
+To download Bubcoin Core, visit [bubcoincore.org](https://bubcoincore.org/en/download/).
 
 Running
 ---------------------
-The following are some helpful notes on how to run Bitcoin Core on your native platform.
+The following are some helpful notes on how to run Bubcoin Core on your native platform.
 
 ### Unix
 
 Unpack the files into a directory and run:
 
-- `bin/bitcoin-qt` (GUI) or
-- `bin/bitcoind` (headless)
+- `bin/bubcoin-qt` (GUI) or
+- `bin/bubcoind` (headless)
 
 ### Windows
 
-Unpack the files into a directory, and then run bitcoin-qt.exe.
+Unpack the files into a directory, and then run bubcoin-qt.exe.
 
 ### macOS
 
-Drag Bitcoin Core to your applications folder, and then run Bitcoin Core.
+Drag Bubcoin Core to your applications folder, and then run Bubcoin Core.
 
 ### Need Help?
 
-* See the documentation at the [Bitcoin Wiki](https://en.bitcoin.it/wiki/Main_Page)
+* See the documentation at the [Bubcoin Wiki](https://en.bubcoin.it/wiki/Main_Page)
 for help and more information.
-* Ask for help on [#bitcoin](https://webchat.freenode.net/#bitcoin) on Freenode. If you don't have an IRC client, use [webchat here](https://webchat.freenode.net/#bitcoin).
-* Ask for help on the [BitcoinTalk](https://bitcointalk.org/) forums, in the [Technical Support board](https://bitcointalk.org/index.php?board=4.0).
+* Ask for help on [#bubcoin](https://webchat.freenode.net/#bubcoin) on Freenode. If you don't have an IRC client, use [webchat here](https://webchat.freenode.net/#bubcoin).
+* Ask for help on the [BubcoinTalk](https://bubcointalk.org/) forums, in the [Technical Support board](https://bubcointalk.org/index.php?board=4.0).
 
 Building
 ---------------------
-The following are developer notes on how to build Bitcoin Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build Bubcoin Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
 - [Dependencies](dependencies.md)
 - [macOS Build Notes](build-osx.md)
@@ -44,17 +44,17 @@ The following are developer notes on how to build Bitcoin Core on your native pl
 - [FreeBSD Build Notes](build-freebsd.md)
 - [OpenBSD Build Notes](build-openbsd.md)
 - [NetBSD Build Notes](build-netbsd.md)
-- [Gitian Building Guide (External Link)](https://github.com/bitcoin-core/docs/blob/master/gitian-building.md)
+- [Gitian Building Guide (External Link)](https://github.com/bubcoin-core/docs/blob/master/gitian-building.md)
 
 Development
 ---------------------
-The Bitcoin repo's [root README](/README.md) contains relevant information on the development process and automated testing.
+The Bubcoin repo's [root README](/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
 - [Productivity Notes](productivity.md)
 - [Release Notes](release-notes.md)
 - [Release Process](release-process.md)
-- [Source Code Documentation (External Link)](https://doxygen.bitcoincore.org/)
+- [Source Code Documentation (External Link)](https://doxygen.bubcoincore.org/)
 - [Translation Process](translation_process.md)
 - [Translation Strings Policy](translation_strings_policy.md)
 - [JSON-RPC Interface](JSON-RPC-interface.md)
@@ -65,13 +65,13 @@ The Bitcoin repo's [root README](/README.md) contains relevant information on th
 - [Benchmarking](benchmarking.md)
 
 ### Resources
-* Discuss on the [BitcoinTalk](https://bitcointalk.org/) forums, in the [Development & Technical Discussion board](https://bitcointalk.org/index.php?board=6.0).
-* Discuss project-specific development on #bitcoin-core-dev on Freenode. If you don't have an IRC client, use [webchat here](https://webchat.freenode.net/#bitcoin-core-dev).
-* Discuss general Bitcoin development on #bitcoin-dev on Freenode. If you don't have an IRC client, use [webchat here](https://webchat.freenode.net/#bitcoin-dev).
+* Discuss on the [BubcoinTalk](https://bubcointalk.org/) forums, in the [Development & Technical Discussion board](https://bubcointalk.org/index.php?board=6.0).
+* Discuss project-specific development on #bubcoin-core-dev on Freenode. If you don't have an IRC client, use [webchat here](https://webchat.freenode.net/#bubcoin-core-dev).
+* Discuss general Bubcoin development on #bubcoin-dev on Freenode. If you don't have an IRC client, use [webchat here](https://webchat.freenode.net/#bubcoin-dev).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)
-- [bitcoin.conf Configuration File](bitcoin-conf.md)
+- [bubcoin.conf Configuration File](bubcoin-conf.md)
 - [Files](files.md)
 - [Fuzz-testing](fuzzing.md)
 - [Reduce Memory](reduce-memory.md)

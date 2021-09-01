@@ -1,0 +1,92 @@
+#!/sbin/openrc-run
+
+# backward compatibility for existing gentoo layout 
+#
+if [ -d "/var/lib/bubcoin/.bubcoin" ]; then
+	BUBCOIND_DEFAULT_DATADIR="/var/lib/bubcoin/.bubcoin"
+else
+	BUBCOIND_DEFAULT_DATADIR="/var/lib/bubcoind"
+fi
+
+BUBCOIND_CONFIGFILE=${BUBCOIND_CONFIGFILE:-/etc/bubcoin/bubcoin.conf}
+BUBCOIND_PIDDIR=${BUBCOIND_PIDDIR:-/var/run/bubcoind}
+BUBCOIND_PIDFILE=${BUBCOIND_PIDFILE:-${BUBCOIND_PIDDIR}/bubcoind.pid}
+BUBCOIND_DATADIR=${BUBCOIND_DATADIR:-${BUBCOIND_DEFAULT_DATADIR}}
+BUBCOIND_USER=${BUBCOIND_USER:-${BUBCOIN_USER:-bubcoin}}
+BUBCOIND_GROUP=${BUBCOIND_GROUP:-bubcoin}
+BUBCOIND_BIN=${BUBCOIND_BIN:-/usr/bin/bubcoind}
+BUBCOIND_NICE=${BUBCOIND_NICE:-${NICELEVEL:-0}}
+BUBCOIND_OPTS="${BUBCOIND_OPTS:-${BUBCOIN_OPTS}}"
+
+name="Bubcoin Core Daemon"
+description="Bubcoin cryptocurrency P2P network daemon"
+
+command="/usr/bin/bubcoind"
+command_args="-pid=\"${BUBCOIND_PIDFILE}\" \
+		-conf=\"${BUBCOIND_CONFIGFILE}\" \
+		-datadir=\"${BUBCOIND_DATADIR}\" \
+		-daemon \
+		${BUBCOIND_OPTS}"
+
+required_files="${BUBCOIND_CONFIGFILE}"
+start_stop_daemon_args="-u ${BUBCOIND_USER} \
+			-N ${BUBCOIND_NICE} -w 2000"
+pidfile="${BUBCOIND_PIDFILE}"
+
+# The retry schedule to use when stopping the daemon. Could be either
+# a timeout in seconds or multiple signal/timeout pairs (like
+# "SIGKILL/180 SIGTERM/300")
+retry="${BUBCOIND_SIGTERM_TIMEOUT}"
+
+depend() {
+	need localmount net
+}
+
+# verify
+# 1) that the datadir exists and is writable (or create it)
+# 2) that a directory for the pid exists and is writable
+# 3) ownership and permissions on the config file
+start_pre() {
+	checkpath \
+	-d \
+	--mode 0750 \
+	--owner "${BUBCOIND_USER}:${BUBCOIND_GROUP}" \
+	"${BUBCOIND_DATADIR}"
+
+	checkpath \
+	-d \
+	--mode 0755 \
+	--owner "${BUBCOIND_USER}:${BUBCOIND_GROUP}" \
+	"${BUBCOIND_PIDDIR}"
+
+	checkpath -f \
+	-o ${BUBCOIND_USER}:${BUBCOIND_GROUP} \
+	-m 0660 \
+	${BUBCOIND_CONFIGFILE}
+
+	checkconfig || return 1
+}
+
+checkconfig()
+{
+	if ! grep -qs '^rpcpassword=' "${BUBCOIND_CONFIGFILE}" ; then
+		eerror ""
+		eerror "ERROR: You must set a secure rpcpassword to run bubcoind."
+		eerror "The setting must appear in ${BUBCOIND_CONFIGFILE}"
+		eerror ""
+		eerror "This password is security critical to securing wallets "
+		eerror "and must not be the same as the rpcuser setting."
+		eerror "You can generate a suitable random password using the following "
+		eerror "command from the shell:"
+		eerror ""
+		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
+		eerror ""
+		eerror "It is recommended that you also set alertnotify so you are "
+		eerror "notified of problems:"
+		eerror ""
+		eerror "ie: alertnotify=echo %%s | mail -s \"Bubcoin Alert\"" \
+			"admin@foo.com"
+		eerror ""
+		return 1
+	fi
+}
