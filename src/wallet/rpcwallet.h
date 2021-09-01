@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_WALLET_RPCWALLET_H
-#define BITCOIN_WALLET_RPCWALLET_H
+#ifndef BUBCOIN_WALLET_RPCWALLET_H
+#define BUBCOIN_WALLET_RPCWALLET_H
 
 #include <span.h>
 
@@ -36,4 +36,4 @@ LegacyScriptPubKeyMan& EnsureLegacyScriptPubKeyMan(CWallet& wallet, bool also_cr
 
 RPCHelpMan getaddressinfo();
 RPCHelpMan signrawtransactionwithwallet();
-#endif //BITCOIN_WALLET_RPCWALLET_H
+#endif //BUBCOIN_WALLET_RPCWALLET_H

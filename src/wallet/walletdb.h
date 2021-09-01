@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_WALLET_WALLETDB_H
-#define BITCOIN_WALLET_WALLETDB_H
+#ifndef BUBCOIN_WALLET_WALLETDB_H
+#define BUBCOIN_WALLET_WALLETDB_H
 
 #include <amount.h>
 #include <script/sign.h>
@@ -291,4 +291,4 @@ std::unique_ptr<WalletDatabase> CreateDummyWalletDatabase();
 /** Return object for accessing temporary in-memory database. */
 std::unique_ptr<WalletDatabase> CreateMockWalletDatabase();
 
-#endif // BITCOIN_WALLET_WALLETDB_H
+#endif // BUBCOIN_WALLET_WALLETDB_H

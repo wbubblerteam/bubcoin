@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_COINS_H
-#define BITCOIN_COINS_H
+#ifndef BUBCOIN_COINS_H
+#define BUBCOIN_COINS_H
 
 #include <compressor.h>
 #include <core_memusage.h>
@@ -350,7 +350,7 @@ const Coin& AccessByTxid(const CCoinsViewCache& cache, const uint256& txid);
 /**
  * This is a minimally invasive approach to shutdown on LevelDB read errors from the
  * chainstate, while keeping user interface out of the common library, which is shared
- * between bitcoind, and bitcoin-qt and non-server tools.
+ * between bubcoind, and bubcoin-qt and non-server tools.
  *
  * Writes do not need similar protection, as failure to write is handled by the caller.
 */
@@ -371,4 +371,4 @@ private:
 
 };
 
-#endif // BITCOIN_COINS_H
+#endif // BUBCOIN_COINS_H

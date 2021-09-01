@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_WALLET_ISMINE_H
-#define BITCOIN_WALLET_ISMINE_H
+#ifndef BUBCOIN_WALLET_ISMINE_H
+#define BUBCOIN_WALLET_ISMINE_H
 
 #include <script/standard.h>
 
@@ -47,4 +47,4 @@ struct CachableAmount
     }
 };
 
-#endif // BITCOIN_WALLET_ISMINE_H
+#endif // BUBCOIN_WALLET_ISMINE_H

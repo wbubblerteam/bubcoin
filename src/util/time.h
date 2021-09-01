@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_UTIL_TIME_H
-#define BITCOIN_UTIL_TIME_H
+#ifndef BUBCOIN_UTIL_TIME_H
+#define BUBCOIN_UTIL_TIME_H
 
 #include <stdint.h>
 #include <string>
@@ -55,4 +55,4 @@ std::string FormatISO8601DateTime(int64_t nTime);
 std::string FormatISO8601Date(int64_t nTime);
 int64_t ParseISO8601DateTime(const std::string& str);
 
-#endif // BITCOIN_UTIL_TIME_H
+#endif // BUBCOIN_UTIL_TIME_H

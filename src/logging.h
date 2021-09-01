@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_LOGGING_H
-#define BITCOIN_LOGGING_H
+#ifndef BUBCOIN_LOGGING_H
+#define BUBCOIN_LOGGING_H
 
 #include <fs.h>
 #include <tinyformat.h>
@@ -186,4 +186,4 @@ static inline void LogPrintf(const char* fmt, const Args&... args)
         }                                    \
     } while (0)
 
-#endif // BITCOIN_LOGGING_H
+#endif // BUBCOIN_LOGGING_H

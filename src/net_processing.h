@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_NET_PROCESSING_H
-#define BITCOIN_NET_PROCESSING_H
+#ifndef BUBCOIN_NET_PROCESSING_H
+#define BUBCOIN_NET_PROCESSING_H
 
 #include <consensus/params.h>
 #include <net.h>
@@ -158,4 +158,4 @@ bool GetNodeStateStats(NodeId nodeid, CNodeStateStats &stats);
 /** Relay transaction to every node */
 void RelayTransaction(const uint256& txid, const uint256& wtxid, const CConnman& connman) EXCLUSIVE_LOCKS_REQUIRED(cs_main);
 
-#endif // BITCOIN_NET_PROCESSING_H
+#endif // BUBCOIN_NET_PROCESSING_H
