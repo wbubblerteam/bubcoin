@@ -36,7 +36,23 @@ information or see https://opensource.org/licenses/MIT.
 
 ## Development Process
 
-Bubcoin is a bitcoin core knockoff. The latest stable release tag is cloned from the upstream repo to a branch like [0.21.1](https://github.com/wbubblerteam/bubcoin/tree/0.21.1). This is then merged into [latest](https://github.com/wbubblerteam/bubcoin/tree/latest). Manual modifications are made to parameters like proof of work difficulty, The scripts are used for automatically renaming everything and replacing parameters like the genesis block hash, and merge conflicts are resolved. When it's stable it's merged into the main branch.
+Bubcoin core is a bitcoin core knockoff. The latest stable release tag is cloned from the upstream repo to a branch like upstream-release-0.21.1](https://github.com/wbubblerteam/bubcoin/tree/upstream-release-0.21.1). This is then merged into [upstream-release-latest](https://github.com/wbubblerteam/bubcoin/tree/upstream-release-latest).
+
+From here the branching is a little convoluted:
+### Scripts
+- Scripts are written on the [scripts-latest](https://github.com/wbubblerteam/bubcoin/tree/scripts-latest). The reason is that I originally worked off the upstream master branch - see [scripts-master](https://github.com/wbubblerteam/bubcoin/tree/scripts-master) - before realising I needed to work off a stable release, and rebasing.
+### Manual modifications
+- Manual icon changes are made on the [manual-icons](https://github.com/wbubblerteam/bubcoin/tree/manual-icons) branch. These include the .icns file and the bitmap with altered text.
+- Manual parameter changes are made on the [manual-chainparams](https://github.com/wbubblerteam/bubcoin/tree/manual-chainparams) branch. These include the proof of work difficulty and coin limit.
+- Manual changes to information is made on the [manual-readme](https://github.com/wbubblerteam/bubcoin/tree/manual-readme) branch. Like this here.
+- The [backporting](https://github.com/wbubblerteam/bubcoin/tree/backporting) branch is used for fixes to the release tag to make it buildable, like dead dependency download links.
+### Automatic modifications
+On these branches changes are made automatically using the scripts.
+- [auto-icons](https://github.com/wbubblerteam/bubcoin/tree/auto-icons)
+- [auto-chainparams](https://github.com/wbubblerteam/bubcoin/tree/auto-chainparams)
+- [auto-rename](https://github.com/wbubblerteam/bubcoin/tree/auto-rename)
+
+Finally, all of these branches are merged into [staging](https://github.com/wbubblerteam/bubcoin/tree/staging), and when staging is stable it's merged into the main branch.
 
 Scripts:
 - [renamer](https://github.com/wbubblerteam/bubcoin/blob/main/renamer.py)
