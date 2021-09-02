@@ -29,6 +29,15 @@ NAME: Bubcoin
 CODE: BUB    
 CODE ISO4217: XUB
 
+## How to use Bubcoin?
+
+Bubcoin is just bitcoin but renamed and restarted. This software is bubcoin core. You can use other software designed for bitcoin with this, by running it with custom parameters.
+
+More info:
+
+https://user-images.githubusercontent.com/26749912/131839369-d2c6ca76-62d8-46b5-b354-70668ac28b86.mp4
+
+
 ## License
 
 Bubcoin Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
