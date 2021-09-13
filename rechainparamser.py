@@ -59,6 +59,14 @@ REPLACES_PARAMS = {
     # genesis block hash - regtest
     '0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206':
     '000000006a0a10c2cc9141a856136b15e43b425ab04b4776c5244430740e796c',
+    # signet challenge
+    '5121'
+    '03ad5e0edad18cb1f0fc0d28a3d4f1f3e445640337489abb10404f2d1e086be4302'
+    '10359ef5021964fe22d6f8e05b2463c9540ce96883fe3b278760f048f5189f2e6c4'
+    '52ae':
+    '5121'
+    '029a7d216d845def2d41967f9235cf63dbe03d2bb67e2fef23f793d37d64406e1a'
+    '51ae',
 }
 
 PCHMS_FORMAT = 'pchMessageStart[{}] = 0x{:02x};'
