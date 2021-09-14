@@ -253,7 +253,7 @@
 #define PACKAGE_NAME "Bitcoin Core"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "Bitcoin Core 0.21.1"
+#define PACKAGE_STRING "Bitcoin Core 0.1.0"
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME "bitcoin"
@@ -262,7 +262,7 @@
 #define PACKAGE_URL "https://bitcoincore.org/"
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "0.21.1"
+#define PACKAGE_VERSION "0.1.0"
 
 /* Define to necessary symbol if this constant uses a non-standard name on
    your system. */
