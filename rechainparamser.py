@@ -48,17 +48,17 @@ REPLACES_PARAMS = {
     # genesis posix timestamp - signet
     '1598918400': '1630262260',
     # genesis hash nonce - signet
-    '52613770': '1725398818',
+    '52613770': '3888117',
     # genesis block hash - signet
     '00000008819873e925422c1ff0f99f7cc9bbb232af63a077a480a3633bee1ef6':
-    '0000000071d537e93d6dfcfb5f35771f0ef22866490c26087863eb6c87428e22',
+    '000001abb49efa8668b90655c11d8cec87bbcf35c3c0ab88b535b820457d613b',
     # genesis posix timestamp - regtest
     '1296688602': '1630243004',
     # genesis hash nonce - regtest
-    f', 2, 0x207fffff': ', 3552514569, 0x207fffff',
+    f', 2, 0x207fffff': ', 0, 0x207fffff',
     # genesis block hash - regtest
     '0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206':
-    '000000006a0a10c2cc9141a856136b15e43b425ab04b4776c5244430740e796c',
+    '7b56544266f99cd7a3c00690dda55c83d2367fd4aa12928d14bf7c08c81f09eb',
     # signet challenge
     '5121'
     '03ad5e0edad18cb1f0fc0d28a3d4f1f3e445640337489abb10404f2d1e086be4302'
