@@ -253,7 +253,7 @@ public:
         vSeeds.clear();
 
         if (!args.IsArgSet("-signetchallenge")) {
-            bin = ParseHex("512103ad5e0edad18cb1f0fc0d28a3d4f1f3e445640337489abb10404f2d1e086be430210359ef5021964fe22d6f8e05b2463c9540ce96883fe3b278760f048f5189f2e6c452ae");
+            bin = ParseHex("5121029a7d216d845def2d41967f9235cf63dbe03d2bb67e2fef23f793d37d64406e1a51ae");
 
 
 
@@ -330,9 +330,9 @@ public:
         nDefaultPort = 38333;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1630262260, 1725398818, 0x1e0377ae, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1630262260, 3888117, 0x1e0377ae, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x0000000071d537e93d6dfcfb5f35771f0ef22866490c26087863eb6c87428e22"));
+        assert(consensus.hashGenesisBlock == uint256S("0x000001abb49efa8668b90655c11d8cec87bbcf35c3c0ab88b535b820457d613b"));
         assert(genesis.hashMerkleRoot == uint256S("0xcd28bcbab1701dd8f32aec2a5f7b0c8ff4fcd56ac794ceb95a63751f67c5abd3"));
 
         vFixedSeeds.clear();
@@ -402,9 +402,9 @@ public:
 
         UpdateActivationParametersFromArgs(args);
 
-        genesis = CreateGenesisBlock(1630243004, 3552514569, 0x207fffff, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1630243004, 0, 0x207fffff, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x000000006a0a10c2cc9141a856136b15e43b425ab04b4776c5244430740e796c"));
+        assert(consensus.hashGenesisBlock == uint256S("0x7b56544266f99cd7a3c00690dda55c83d2367fd4aa12928d14bf7c08c81f09eb"));
         assert(genesis.hashMerkleRoot == uint256S("0xcd28bcbab1701dd8f32aec2a5f7b0c8ff4fcd56ac794ceb95a63751f67c5abd3"));
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
