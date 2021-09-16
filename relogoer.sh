@@ -31,3 +31,6 @@ do
     convert $png_src -resize $size "bitcoin$size_underscores.xpm"
     mv "bitcoin$size_underscores.xpm" "bitcoin$size.xpm"
 done
+
+cd $root_dir/doc
+convert $png_src -resize 55 bitcoin_logo_doxygen.png
