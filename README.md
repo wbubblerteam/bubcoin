@@ -63,6 +63,10 @@ On these branches changes are made automatically using the scripts.
 
 Finally, all of these branches are merged into [staging](https://github.com/wbubblerteam/bubcoin/tree/staging), and when staging is stable it's merged into the main branch.
 
+In other words:
+![branching](https://user-images.githubusercontent.com/26749912/133629533-27d2d4dd-c72b-4243-9cca-8dd2bf4d9726.png)
+
+
 Scripts:
 - [renamer](https://github.com/wbubblerteam/bubcoin/blob/main/renamer.py)
 - [logo svg colour replacer](https://github.com/wbubblerteam/bubcoin/blob/main/relogoer.py)
