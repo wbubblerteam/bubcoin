@@ -16,12 +16,6 @@ EMPLACE_RE = re.compile(
     r'^\s*vSeeds\.emplace_back\("(?!dummySeed\.invalid).*"\);.*$',
     re.MULTILINE
 )
-CHECKPOINTS_RE = re.compile(
-    r'checkpointData = \{\s*\{'
-    r'(?:\s*\{\s*[0-9]+, uint256S\(\"0x([a-z0-9]+)\"\)\}\,)'
-    r'+\s*\}\s*\};'
-)
-EMPTY_CHECKPOINTS = """checkpointData = {{}};"""
 TXDATA_RE = re.compile(
     r'chainTxData = ChainTxData\{\n(?:.*\n)?'
     r'.*?([0-9]+),\n.*?([0-9]+),\n.*?([0-9]+\.?[0-9]*),'
@@ -42,11 +36,11 @@ REPLACES_PARAMS = {
     # genesis byteswapped merkle hash
     '4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b':
     'cd28bcbab1701dd8f32aec2a5f7b0c8ff4fcd56ac794ceb95a63751f67c5abd3',
-    # genesis posix timestamp
+    # genesis posix timestamp - mainnet
     '1231006505': '1629119094',
-    # genesis hash nonce
+    # genesis hash nonce - mainnet
     '2083236893': '737906790',
-    # genesis block hash
+    # genesis block hash - mainnet
     '000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f':
     '00000000e51e0da00b4542726acf5385ff14ec7378e7ebf641eedc976d851aa1',
     # genesis posix timestamp - testnet
@@ -80,6 +74,30 @@ REPLACES_PARAMS = {
     '5121'
     '029a7d216d845def2d41967f9235cf63dbe03d2bb67e2fef23f793d37d64406e1a'
     '51ae',
+}
+
+CHECKPOINTS_RE = re.compile(
+    r'checkpointData = \{\s*\{'
+    r'(?:\s*\{\s*[0-9]+, uint256S\(\"(?:0x)?([a-z0-9]+)\"\)\}\,)'
+    r'+\s*\}\s*\};'
+)
+CHECKPOINTS_FORMAT = 'checkpointData = {{{0, uint256S("%s")}}};'
+REPLACES_CHECKPOINTS = {
+    # mainnet
+    '00000000000000004d9b4ef50f0f9d686fd69db2e03af35a100370c64632a983':
+    REPLACES_PARAMS[
+        '000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f'
+    ],
+    # testnet
+    '000000002a936ca763904c3c35fce2f3556c559c0214345d31b1bcebf76acb70':
+    REPLACES_PARAMS[
+        '000000000933ea01ad0ee984209779baaec3ced90fa3f408719526f8d77f4943'
+    ],
+    # regtest
+    '0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206':
+    REPLACES_PARAMS[
+        '0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206'
+    ],
 }
 
 PCHMS_FORMAT = 'pchMessageStart[{}] = 0x{:02x};'
@@ -149,7 +167,12 @@ def replace_pchms(chainparams: str) -> str:
             modified = modified.replace(old_declare, new_declare)
 
     return modified
-        
+
+
+def checkpoints_replacement(matchobj: re.Match) -> str:
+    replacement_hash = REPLACES_CHECKPOINTS[matchobj[1]]
+    return CHECKPOINTS_FORMAT % replacement_hash
+
 
 def txdata_replacement(matchobj: re.Match) -> str:
     modified = matchobj[0]
@@ -164,7 +187,7 @@ def replace_params(chainparams: str) -> str:
     # remove seed dns servers
     modified = re.sub(EMPLACE_RE, '', modified)
     # remove chain checkpoints
-    modified = re.sub(CHECKPOINTS_RE, EMPTY_CHECKPOINTS, modified)
+    modified = re.sub(CHECKPOINTS_RE, checkpoints_replacement, modified)
     # replace transaction data
     modified = re.sub(TXDATA_RE, txdata_replacement, modified)
     # replace genesis block stuff
