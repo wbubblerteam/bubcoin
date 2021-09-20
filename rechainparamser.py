@@ -20,6 +20,10 @@ CHECKPOINTS_RE = re.compile(
     r'checkpointData = \{\s*{(\s*\{.*\}\,)*\s*\}\s*\};'
 )
 EMPTY_CHECKPOINTS = """checkpointData = {{}};"""
+TXDATA_RE = re.compile(
+    r'chainTxData = ChainTxData\{\n(?:.*\n)?'
+    r'.*?([0-9]+),\n.*?([0-9]+),\n.*?([0-9]+\.?[0-9]*),\s*\};'
+)
 
 REPLACES_PARAMS = {
     # genesis timestamp string
@@ -144,6 +148,12 @@ def replace_pchms(chainparams: str) -> str:
     return modified
         
 
+def txdata_replacement(matchobj: re.Match) -> str:
+    modified = matchobj[0]
+    for group in matchobj.groups():
+        modified = modified.replace(group, '0')
+    return modified
+
 
 def replace_params(chainparams: str) -> str:
     modified = chainparams
@@ -152,6 +162,8 @@ def replace_params(chainparams: str) -> str:
     modified = re.sub(EMPLACE_RE, '', modified)
     # remove chain checkpoints
     modified = re.sub(CHECKPOINTS_RE, EMPTY_CHECKPOINTS, modified)
+    # replace transaction data
+    modified = re.sub(TXDATA_RE, txdata_replacement, modified)
     # replace genesis block stuff
     for key, value in REPLACES_PARAMS.items():
         modified = modified.replace(key, value)
