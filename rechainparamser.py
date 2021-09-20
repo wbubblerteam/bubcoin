@@ -1,5 +1,11 @@
 #!/usr/bin/env python3.9
 
+"""
+Copyright (c) 2021 JMcB
+Not for use with any cryptocurrency or blockchain that is any of the following:
+legitimate, commercial, high proof-of-work
+"""
+
 import random
 import re
 from pathlib import Path
