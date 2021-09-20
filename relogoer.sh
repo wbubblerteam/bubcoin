@@ -1,4 +1,9 @@
 #!/bin/bash
+
+# Copyright (c) 2021 JMcB
+# Not for use with any cryptocurrency or blockchain that is any of the following:
+# legitimate, commercial, high proof-of-work
+
 set -x
 
 root_dir=$(pwd)
