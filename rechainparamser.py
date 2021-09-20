@@ -17,12 +17,15 @@ EMPLACE_RE = re.compile(
     re.MULTILINE
 )
 CHECKPOINTS_RE = re.compile(
-    r'checkpointData = \{\s*{(\s*\{.*\}\,)*\s*\}\s*\};'
+    r'checkpointData = \{\s*\{'
+    r'(?:\s*\{\s*[0-9]+, uint256S\(\"0x([a-z0-9]+)\"\)\}\,)'
+    r'+\s*\}\s*\};'
 )
 EMPTY_CHECKPOINTS = """checkpointData = {{}};"""
 TXDATA_RE = re.compile(
     r'chainTxData = ChainTxData\{\n(?:.*\n)?'
-    r'.*?([0-9]+),\n.*?([0-9]+),\n.*?([0-9]+\.?[0-9]*),\s*\};'
+    r'.*?([0-9]+),\n.*?([0-9]+),\n.*?([0-9]+\.?[0-9]*),'
+    r'\s*\};'
 )
 
 REPLACES_PARAMS = {
